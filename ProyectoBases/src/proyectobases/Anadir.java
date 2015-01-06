@@ -6,7 +6,7 @@
 
 package proyectobases;
 
-import com.sun.prism.paint.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -264,6 +264,35 @@ public class Anadir extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String string = "";
+        //String.c
+        if (!ValidateInputEmpleado.validateProductName(productName)){
+            //JOptionPane.showMessageDialog(null,  "Nombre fuera de los limites, maximo 20 caracteres.");
+            string = string + "Nombre fuera de los limites, maximo 20 caracteres.\n";
+        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){ 
+            //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
+            string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
+        } if (!ValidateInputEmpleado.validatePrecio(precio)){ 
+            string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
+        } if (!ValidateInputEmpleado.validateAddress(direccion)){
+            string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
+        } if (!ValidateInputEmpleado.validateFecha(fecha)){
+            string = string + "Fecha incorrecta.\n";
+        } 
+        
+        /*
+        
+        GUARDAR DATOS
+        
+    
+        
+        
+        */
+        
+         if (string.equals("")){
+            string = string + "Exito! Sus datos se han guardado";
+        }
+      JOptionPane.showMessageDialog(null, string);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
