@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class AnadirProveedor extends javax.swing.JFrame {
 
-    public String productName = "";
-    public String cantidad = "";
-    public String precio = "";
+    public String ruc = "";
+    public String nombre = "";
     public String direccion = "";
-    public String fecha = "";
+    public String telefono = "";
+    public String idTienda = "";
     /**
      * Creates new form Anadir
      */
@@ -241,17 +241,17 @@ public class AnadirProveedor extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = "";
         //String.c
-        if (!ValidateInputEmpleado.validateProductName(productName)){
+        if (!ValidateInputEmpleado.validateProductName(ruc)){
             //JOptionPane.showMessageDialog(null,  "Nombre fuera de los limites, maximo 20 caracteres.");
             string = string + "Nombre fuera de los limites, maximo 20 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){ 
+        } if (!ValidateInputEmpleado.validateCantidad(nombre)){ 
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
             string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
-        } if (!ValidateInputEmpleado.validatePrecio(precio)){ 
+        } if (!ValidateInputEmpleado.validatePrecio(direccion)){ 
             string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
-        } if (!ValidateInputEmpleado.validateAddress(direccion)){
+        } if (!ValidateInputEmpleado.validateAddress(telefono)){
             string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(fecha)){
+        } if (!ValidateInputEmpleado.validateFecha(idTienda)){
             string = string + "Fecha incorrecta.\n";
         } 
         
@@ -281,9 +281,9 @@ public class AnadirProveedor extends javax.swing.JFrame {
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
-        fecha = evt.getActionCommand();
+        telefono = evt.getActionCommand();
         jTextField5.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateFecha(fecha)){
+        if (ValidateInputEmpleado.validatePhone(telefono)){
             jTextField5.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -299,24 +299,29 @@ public class AnadirProveedor extends javax.swing.JFrame {
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-        precio = evt.getActionCommand();
+        nombre = evt.getActionCommand();
         jTextField3.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validatePrecio(precio)){
+        if (ValidateInputEmpleado.validateFirstName(nombre)){
             jTextField3.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
+        ruc = evt.getActionCommand();
         jTextField2.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+        if (ValidateInputEmpleado.validateRUC(ruc)){
             jTextField2.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
+        idTienda = evt.getActionCommand();
+        jTextField6.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateID(idTienda)){
+            jTextField6.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**

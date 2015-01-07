@@ -11,28 +11,40 @@ public class ValidateInputEmpleado
        return id.matches( "\\d{10}" );
    }
    
+   // validate RUC
+    public static boolean validateRUC (String id)
+   {
+       return id.matches( "\\d{13}" );
+   }
+    
    // validate cedula
    public static boolean validateCedula (String cedula)
    {
        return cedula.matches( "[0-2]\\d{9}" );
    }
   
+    public static boolean validateNumFactura (String numfactura)
+   {
+       return numfactura.matches( "\\d{1,9}" );
+       //Aunque creo que este se genera sucesivamente
+   }
+    
    //validate product name
    public static boolean validateProductName( String productName )
    {
-      return productName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]+\\s[a-zA-Z]{3,20})" );
+      return productName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]{2,10}\\s[a-zA-Z]{2,10})" );
    } // end method validateFirstName
    
    //validate first name
    public static boolean validateFirstName( String firstName )
    {
-      return firstName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]+\\s[a-zA-Z]{3,20})" );
+      return firstName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]{2,10}\\s[a-zA-Z]{2,10})" );
    } // end method validateFirstName
 
    // validate last name
    public static boolean validateLastName( String lastName )
    {
-      return lastName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]+\\s[a-zA-Z]{3,20})" );
+      return lastName.matches( "([a-zA-Z]{3,20}|[a-zA-Z]{2,10}\\s[a-zA-Z]{3,10})" );
    } // end method validateLastName
 
    // validate fecha
@@ -71,13 +83,19 @@ public class ValidateInputEmpleado
    
    public static boolean validateCity( String city )
    {
-      return (city.matches( "593\\d{10}") ||city.matches( "\\d{9}")) ;
+      return (city.matches("([a-zA-Z]{3,10}|[a-zA-Z]{2,3}\\s[a-zA-Z]{2,7})")) ;
    } // end method validateCity
 
    // validate state
    public static boolean validateState( String state )
    {
-      return state.matches( "([a-zA-Z]+|[a-zA-Z]+\\s[a-zA-Z]+)" ) ;
+      return state.matches( "([a-zA-Z]{3,10}|[a-zA-Z]{2,3}\\s[a-zA-Z]{2,7})" ) ;
+   } // end method validateState
+   
+    // validate tipo
+   public static boolean validateTipo( String tipo )
+   {
+      return tipo.matches( "[a-zA-Z]{3,10}" ) ;
    } // end method validateState
 
    // validate zip
@@ -89,13 +107,13 @@ public class ValidateInputEmpleado
    // validate phone
    public static boolean validatePhone( String phone )
    {
-      return (phone.matches( "593\\d{10}") ||phone.matches( "\\d{9}")) ;
+      return (phone.matches( "[+]593\\d{10}") || phone.matches( "\\d{9}")) ;
    } // end method validatePhone
    
    // validate descripcion
    public static boolean validateDescripcion( String descripcion )
    {
-      return descripcion.matches( "[a-zA-Z]{10,40}") ;
+      return descripcion.matches( "[^`]{5,30}") ;
    } // end method validatePhone
    
 } // end class ValidateInput

@@ -134,10 +134,8 @@
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="jTextField7" alignment="0" pref="145" max="32767" attributes="0"/>
                                               <Component id="jTextField3" alignment="0" max="32767" attributes="0"/>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jTextField5" alignment="0" pref="86" max="32767" attributes="0"/>
-                                                  <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
+                                              <Component id="jTextField5" alignment="0" pref="86" max="32767" attributes="0"/>
+                                              <Component id="jTextField6" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="jTextField2" alignment="0" pref="90" max="32767" attributes="0"/>

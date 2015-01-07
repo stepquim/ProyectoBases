@@ -14,11 +14,11 @@ import javax.swing.JOptionPane;
  */
 public class AnadirEmpleado extends javax.swing.JFrame {
 
-    public String productName = "";
-    public String cantidad = "";
-    public String precio = "";
+    public String cedula = "";
+    public String nombre = "";
+    public String telefono = "";
     public String direccion = "";
-    public String fecha = "";
+    public String idEmpleado = "";
     /**
      * Creates new form Anadir
      */
@@ -124,23 +124,17 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5))
-                        .addGap(28, 28, 28)
+                        .addGap(46, 46, 46)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField4)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE))))))
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 153, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(63, 63, 63)
@@ -225,9 +219,9 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -260,17 +254,17 @@ public class AnadirEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = "";
         //String.c
-        if (!ValidateInputEmpleado.validateProductName(productName)){
+        if (!ValidateInputEmpleado.validateProductName(cedula)){
             //JOptionPane.showMessageDialog(null,  "Nombre fuera de los limites, maximo 20 caracteres.");
             string = string + "Nombre fuera de los limites, maximo 20 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){
+        } if (!ValidateInputEmpleado.validateCantidad(nombre)){
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
             string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
-        } if (!ValidateInputEmpleado.validatePrecio(precio)){
+        } if (!ValidateInputEmpleado.validatePrecio(telefono)){
             string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
         } if (!ValidateInputEmpleado.validateAddress(direccion)){
             string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(fecha)){
+        } if (!ValidateInputEmpleado.validateFecha(idEmpleado)){
             string = string + "Fecha incorrecta.\n";
         }
 
@@ -297,6 +291,11 @@ public class AnadirEmpleado extends javax.swing.JFrame {
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
+        nombre = evt.getActionCommand();
+        jTextField6.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFirstName(nombre)){
+            jTextField6.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
@@ -305,28 +304,28 @@ public class AnadirEmpleado extends javax.swing.JFrame {
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
-        direccion = evt.getActionCommand();
+        idEmpleado = evt.getActionCommand();
         jTextField4.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateAddress(direccion)){
+        if (ValidateInputEmpleado.validateID(idEmpleado)){
             jTextField4.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-        precio = evt.getActionCommand();
+        telefono = evt.getActionCommand();
         jTextField3.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validatePrecio(precio)){
+        if (ValidateInputEmpleado.validatePhone(telefono)){
             jTextField3.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        productName = evt.getActionCommand();
+        cedula = evt.getActionCommand();
         jTextField1.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateProductName(productName)){
-            System.out.println( "Valid input.  Thank you." );
+        if (ValidateInputEmpleado.validateCedula(cedula)){
+            //System.out.println( "Valid input.  Thank you." );
             jTextField1.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
@@ -342,9 +341,9 @@ public class AnadirEmpleado extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
+        direccion = evt.getActionCommand();
         jTextField2.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+        if (ValidateInputEmpleado.validateAddress(direccion)){
             jTextField2.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField2ActionPerformed

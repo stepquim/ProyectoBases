@@ -14,12 +14,14 @@ import javax.swing.JOptionPane;
  */
 public class AnadirRegistro extends javax.swing.JFrame {
 
-    public String productName = "";
+    public String idRegistro = "";
+    public String tipo = "";
+    public String fechaEnt = "";
+    public String fechaSal = "";
+    public String material = "";
     public String cantidad = "";
-    public String precio = "";
-    public String direccion = "";
-    public String fecha = "";
-    public String almacenamiento = "";
+    public String destino = "";
+    public String proveedor = "";
     /**
      * Creates new form Anadir
      */
@@ -175,11 +177,11 @@ public class AnadirRegistro extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField1)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel8)
@@ -309,19 +311,19 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        productName = evt.getActionCommand();
+        idRegistro = evt.getActionCommand();
         jTextField1.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateProductName(productName)){
-           System.out.println( "Valid input.  Thank you." );
+        if (ValidateInputEmpleado.validateID(idRegistro)){
+           //System.out.println( "Valid input.  Thank you." );
            jTextField1.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
+        tipo = evt.getActionCommand();
         jTextField2.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+        if (ValidateInputEmpleado.validateTipo(tipo)){
            jTextField2.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
@@ -330,17 +332,17 @@ public class AnadirRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = "";
         //String.c
-        if (!ValidateInputEmpleado.validateProductName(productName)){
+        if (!ValidateInputEmpleado.validateProductName(idRegistro)){
             //JOptionPane.showMessageDialog(null,  "Nombre fuera de los limites, maximo 20 caracteres.");
             string = string + "Nombre fuera de los limites, maximo 20 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){ 
+        } if (!ValidateInputEmpleado.validateCantidad(tipo)){ 
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
             string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
-        } if (!ValidateInputEmpleado.validatePrecio(precio)){ 
+        } if (!ValidateInputEmpleado.validatePrecio(fechaEnt)){ 
             string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
-        } if (!ValidateInputEmpleado.validateAddress(direccion)){
+        } if (!ValidateInputEmpleado.validateAddress(fechaSal)){
             string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(fecha)){
+        } if (!ValidateInputEmpleado.validateFecha(material)){
             string = string + "Fecha incorrecta.\n";
         } 
         
@@ -379,18 +381,18 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
-        direccion = evt.getActionCommand();
+        fechaSal = evt.getActionCommand();
         jTextField4.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateAddress(direccion)){
+        if (ValidateInputEmpleado.validateFecha(fechaSal)){
            jTextField4.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
-        fecha = evt.getActionCommand();
+        fechaEnt = evt.getActionCommand();
         jTextField5.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateFecha(fecha)){
+        if (ValidateInputEmpleado.validateFecha(fechaEnt)){
            jTextField5.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -401,9 +403,9 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
-        almacenamiento = evt.getActionCommand();
+        material = evt.getActionCommand();
         jTextField5.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateDescripcion(almacenamiento)){
+        if (ValidateInputEmpleado.validateFirstName(material)){
            jTextField5.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField6ActionPerformed
@@ -414,6 +416,11 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
+        cantidad = evt.getActionCommand();
+        jTextField7.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFirstName(cantidad)){
+           jTextField7.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jTextField8FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField8FocusLost
@@ -422,6 +429,11 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
         // TODO add your handling code here:
+        destino = evt.getActionCommand();
+        jTextField8.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateAddress(destino)){
+           jTextField8.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField8ActionPerformed
 
     private void jTextField9FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField9FocusLost
@@ -430,6 +442,11 @@ public class AnadirRegistro extends javax.swing.JFrame {
 
     private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
         // TODO add your handling code here:
+        proveedor = evt.getActionCommand();
+        jTextField9.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFirstName(proveedor)){
+           jTextField9.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField9ActionPerformed
 
     /**

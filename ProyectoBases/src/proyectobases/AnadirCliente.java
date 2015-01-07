@@ -13,12 +13,14 @@ import javax.swing.JOptionPane;
  * @author CltControl
  */
 public class AnadirCliente extends javax.swing.JFrame {
-
-    public String productName = "";
-    public String cantidad = "";
-    public String precio = "";
+    public String string = "";
+    public String cedula = "";
+    public String ruc = "";
+    public String nombre = "";
+    public String apellido = "";
     public String direccion = "";
-    public String fecha = "";
+    public String telefono = "";
+    public String idCliente = "";
     /**
      * Creates new form Anadir
      */
@@ -278,19 +280,19 @@ public class AnadirCliente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String string = "";
+        string = "";
         //String.c
-        if (!ValidateInputEmpleado.validateProductName(productName)){
+        if (!ValidateInputEmpleado.validateProductName(cedula)){
             //JOptionPane.showMessageDialog(null,  "Nombre fuera de los limites, maximo 20 caracteres.");
             string = string + "Nombre fuera de los limites, maximo 20 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){ 
+        } if (!ValidateInputEmpleado.validateCantidad(ruc)){ 
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
             string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
-        } if (!ValidateInputEmpleado.validatePrecio(precio)){ 
+        } if (!ValidateInputEmpleado.validatePrecio(nombre)){ 
             string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
-        } if (!ValidateInputEmpleado.validateAddress(direccion)){
+        } if (!ValidateInputEmpleado.validateAddress(apellido)){
             string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(fecha)){
+        } if (!ValidateInputEmpleado.validateFecha(direccion)){
             string = string + "Fecha incorrecta.\n";
         } 
         
@@ -320,9 +322,9 @@ public class AnadirCliente extends javax.swing.JFrame {
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
-        fecha = evt.getActionCommand();
+        telefono = evt.getActionCommand();
         jTextField5.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateFecha(fecha)){
+        if (ValidateInputEmpleado.validatePhone(telefono)){
             jTextField5.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -338,18 +340,18 @@ public class AnadirCliente extends javax.swing.JFrame {
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
-        precio = evt.getActionCommand();
+        nombre = evt.getActionCommand();
         jTextField3.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validatePrecio(precio)){
+        if (ValidateInputEmpleado.validateFirstName(nombre)){
             jTextField3.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        productName = evt.getActionCommand();
+        cedula = evt.getActionCommand();
         jTextField1.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateProductName(productName)){
+        if (ValidateInputEmpleado.validateCedula(cedula)){
             System.out.println( "Valid input.  Thank you." );
             jTextField1.setForeground(java.awt.Color.BLACK);
         }
@@ -366,19 +368,29 @@ public class AnadirCliente extends javax.swing.JFrame {
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
+        ruc = evt.getActionCommand();
         jTextField2.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+        if (ValidateInputEmpleado.validateRUC(ruc)){
             jTextField2.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
+        idCliente = evt.getActionCommand();
+        jTextField6.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateID(idCliente)){
+            jTextField6.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField6ActionPerformed
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
+        apellido = evt.getActionCommand();
+        jTextField7.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateLastName(apellido)){
+            jTextField7.setForeground(java.awt.Color.BLACK);
+        }
     }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
