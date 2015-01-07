@@ -3,10 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/blanca/Desktop/ProyectoBases/src/proyectobases/ValidateInputEmpleado.java</file>
-            <file>file:/C:/Users/blanca/Desktop/ProyectoBases/src/proyectobases/Factura.java</file>
-            <file>file:/C:/Users/blanca/Desktop/ProyectoBases/src/proyectobases/Menu.java</file>
-            <file>file:/C:/Users/blanca/Desktop/ProyectoBases/src/proyectobases/Anadir.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/BusquedaFacturaXFecha.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/AnadirRegistro.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/Menu.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/AnadirEmpleado.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/BusquedaFacturaXProvincia.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/Anadir.java</file>
+            <file>file:/home/leonardo/Desktop/DBMS/ProyectoBases/src/proyectobases/AnadirCliente.java</file>
         </group>
     </open-files>
 </project-private>

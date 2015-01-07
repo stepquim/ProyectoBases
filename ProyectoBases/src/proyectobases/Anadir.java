@@ -96,7 +96,7 @@ public class Anadir extends javax.swing.JFrame {
 
         lMessage1.setForeground(new java.awt.Color(204, 0, 0));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,10 +410,10 @@ public class Anadir extends javax.swing.JFrame {
         }
          if (string.equals("Exito! Sus datos se han guardado")){
             DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-            model.addRow(new Object[]{jTextField1.getText(), jTextField2.getText(), jTextField3.getText(), 
+            model.addRow(new Object[]{jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Float.parseFloat(jTextField3.getText()), 
                                       jTextField4.getText(), jTextField5.getText(), jTextField6.getText()});
         } 
-      JOptionPane.showMessageDialog(null, string);
+      JOptionPane.showMessageDialog(null, string, "Inventario",JOptionPane.NO_OPTION);
     }//GEN-LAST:event_BtnAgregar1ActionPerformed
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -422,7 +422,7 @@ public class Anadir extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:        
-        
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
@@ -510,8 +510,8 @@ public class Anadir extends javax.swing.JFrame {
             }
         }else{
             model.setValueAt(jTextField1.getText(), TablaInventario.getSelectedRow(), 0);
-            model.setValueAt(jTextField2.getText(), TablaInventario.getSelectedRow(), 1);
-            model.setValueAt(jTextField3.getText(), TablaInventario.getSelectedRow(), 2);
+            model.setValueAt(Integer.parseInt(jTextField2.getText()), TablaInventario.getSelectedRow(), 1);
+            model.setValueAt(Float.parseFloat(jTextField3.getText()), TablaInventario.getSelectedRow(), 2);
             model.setValueAt(jTextField4.getText(), TablaInventario.getSelectedRow(), 3);
             model.setValueAt(jTextField5.getText(), TablaInventario.getSelectedRow(), 4);
             model.setValueAt(jTextField6.getText(), TablaInventario.getSelectedRow(), 5);

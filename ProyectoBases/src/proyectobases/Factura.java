@@ -67,6 +67,7 @@ public class Factura extends javax.swing.JFrame {
         BtnModificar = new javax.swing.JButton();
         BtnQuitar = new javax.swing.JButton();
         lMessage = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
@@ -86,6 +87,7 @@ public class Factura extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        BtnAnadir.setMnemonic('A');
         BtnAnadir.setText("Añadir Cliente");
         BtnAnadir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,9 +118,16 @@ public class Factura extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         TablaInventario.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,6 +178,7 @@ public class Factura extends javax.swing.JFrame {
 
         jLabel6.setText("Total");
 
+        jTextField5.setEnabled(false);
         jTextField5.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField5FocusLost(evt);
@@ -180,6 +190,7 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
+        BtnAnadir1.setMnemonic('P');
         BtnAnadir1.setText("Añadir Producto");
         BtnAnadir1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,6 +205,7 @@ public class Factura extends javax.swing.JFrame {
 
         jLabel8.setText("Número de Factura:");
 
+        jTextField6.setEnabled(false);
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextField6FocusLost(evt);
@@ -259,7 +271,8 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
-        BtnCancelar1.setText("Listo");
+        BtnCancelar1.setMnemonic('G');
+        BtnCancelar1.setText("Generar");
         BtnCancelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCancelar1ActionPerformed(evt);
@@ -282,26 +295,31 @@ public class Factura extends javax.swing.JFrame {
 
         lMessage.setForeground(new java.awt.Color(204, 0, 0));
 
+        jButton1.setMnemonic('C');
+        jButton1.setText("Cerrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout VentanaMaterialLayout = new javax.swing.GroupLayout(VentanaMaterial);
         VentanaMaterial.setLayout(VentanaMaterialLayout);
         VentanaMaterialLayout.setHorizontalGroup(
             VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel8))
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28))
-                    .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel9)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(VentanaMaterialLayout.createSequentialGroup()
                                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
@@ -317,55 +335,48 @@ public class Factura extends javax.swing.JFrame {
                                 .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(VentanaMaterialLayout.createSequentialGroup()
                                 .addGap(20, 20, 20)
-                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(jLabel7)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(VentanaMaterialLayout.createSequentialGroup()
                             .addGap(36, 36, 36)
-                            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(BtnAnadir1, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
-                                .addComponent(BtnAnadir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                            .addGap(26, 26, 26)
-                            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(BtnAnadir1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(BtnAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(207, 207, 207)
+                                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(BtnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(35, 35, 35))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                        .addGap(10, 10, 10)
+                                        .addComponent(BtnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13))
                                 .addGroup(VentanaMaterialLayout.createSequentialGroup()
                                     .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                                    .addGap(10, 10, 10)
-                                                    .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGap(44, 44, 44))
-                                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                            .addComponent(jLabel12)
-                                            .addGap(74, 74, 74)))
-                                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                            .addGap(10, 10, 10)
-                                            .addComponent(BtnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentanaMaterialLayout.createSequentialGroup()
-                                            .addComponent(jLabel13)
-                                            .addGap(44, 44, 44))))))))
-                .addContainerGap(116, Short.MAX_VALUE))
-            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentanaMaterialLayout.createSequentialGroup()
-                    .addContainerGap(358, Short.MAX_VALUE)
-                    .addComponent(BtnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(133, 133, 133)))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentanaMaterialLayout.createSequentialGroup()
+                            .addGap(26, 26, 26)
+                            .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12)
+                        .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel7))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         VentanaMaterialLayout.setVerticalGroup(
             VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -390,43 +401,47 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(6, 6, 6)
-                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel13)
-                                .addComponent(jLabel12))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(13, 13, 13)
-                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                .addComponent(jLabel13)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(13, 13, 13)
+                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addGap(33, 33, 33)))
+                        .addGap(13, 13, 13)
+                        .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lMessage, javax.swing.GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnAnadir1)
-                .addGap(5, 5, 5)
-                .addComponent(BtnAnadir)
+                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnAnadir1)
+                    .addComponent(BtnCancelar1))
+                .addGap(2, 2, 2)
+                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtnAnadir)
+                    .addComponent(jButton1))
                 .addContainerGap())
-            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentanaMaterialLayout.createSequentialGroup()
-                    .addContainerGap(492, Short.MAX_VALUE)
-                    .addComponent(BtnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(9, 9, 9)))
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -441,14 +456,14 @@ public class Factura extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(224, 224, 224)
                 .addComponent(jLabel11)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,27 +478,6 @@ public class Factura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnadirActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_BtnAnadirActionPerformed
-
-    private void BtnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadirMouseClicked
-        // TODO add your handling code here
-        new AnadirCliente().setVisible(true);
-    }//GEN-LAST:event_BtnAnadirMouseClicked
-
-    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
-        // TODO add your handling code here:
-        lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        if (!jTextFieldNombre.getText().trim().equals("")){
-            model.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
-        } else {
-            lMessage.setText("El nombre no puede quedar en blanco");
-        }
-    }//GEN-LAST:event_BtnAgregarActionPerformed
-
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
         /*jTextField1.setForeground(java.awt.Color.RED);
@@ -497,135 +491,53 @@ public class Factura extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        /*jTextField1.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateLastName(lastName)){
-            System.out.println( "Valid input.  Thank you." );
-            jTextField1.setForeground(java.awt.Color.BLACK);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void BtnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitarActionPerformed
+        // TODO add your handling code here:
+        lMessage.setText("");
+        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
+        if (TablaInventario.getSelectedRow()==-1){
+            if(TablaInventario.getRowCount()==0){
+                lMessage.setText("Table is Empty");
+            }else{
+                lMessage.setText("You must select a product");
+            }
+        }else{
+            model.removeRow(TablaInventario.getSelectedRow());
+        }
+
+    }//GEN-LAST:event_BtnQuitarActionPerformed
+
+    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+        // TODO add your handling code here:
+        lMessage.setText("");
+        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
+        if (TablaInventario.getSelectedRow()==-1){
+            if(TablaInventario.getRowCount()==0){
+                lMessage.setText("Table is Empty");
+            }else{
+                lMessage.setText("You must select a product");
+            }
+        }else{
+            model.setValueAt(jTextFieldNombre.getText(), TablaInventario.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldCant.getText(), TablaInventario.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldPrecio.getText(), TablaInventario.getSelectedRow(), 2);
+        }
+
+        /*if (!jTextFieldNombre.getText().trim().equals("")){
+            model.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
+        } else {
+            lMessage.setText("El nombre no puede quedar en blanco");
         }*/
-    }//GEN-LAST:event_jTextField2FocusLost
+    }//GEN-LAST:event_BtnModificarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void BtnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelar1ActionPerformed
         // TODO add your handling code here:
-        cliente = evt.getActionCommand();
-        jTextField2.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateFirstName(cliente)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField2.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3FocusLost
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-        ruc = evt.getActionCommand();
-        jTextField3.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateRUC(ruc)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField3.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField3ActionPerformed
-
-    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4FocusLost
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-        direccion = evt.getActionCommand();
-        jTextField4.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateAddress(direccion)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField4.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5FocusLost
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-        total = evt.getActionCommand();
-        jTextField5.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validatePrecio(total)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField5.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void BtnAnadir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadir1MouseClicked
-        // TODO add your handling code here:
-        new Anadir().setVisible(true);
-    }//GEN-LAST:event_BtnAnadir1MouseClicked
-
-    private void BtnAnadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnadir1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAnadir1ActionPerformed
-
-    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6FocusLost
-
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-        numfactura = evt.getActionCommand();
-        jTextField6.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateNumFactura(numfactura)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField6.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
-    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7FocusLost
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        // TODO add your handling code here:
-        fecha = evt.getActionCommand();
-        jTextField7.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateFecha(fecha)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextField7.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreFocusLost
-
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
-        // TODO add your handling code here:
-        nombre = evt.getActionCommand();
-        jTextFieldNombre.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateProductName(nombre)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextFieldNombre.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
-
-    private void jTextFieldCantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCantFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCantFocusLost
-
-    private void jTextFieldCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCantActionPerformed
-        // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
-        jTextFieldCant.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextFieldCant.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextFieldCantActionPerformed
-
-    private void jTextFieldPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrecioFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPrecioFocusLost
+    }//GEN-LAST:event_BtnCancelar1ActionPerformed
 
     private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
         // TODO add your handling code here:
@@ -637,49 +549,135 @@ public class Factura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextFieldPrecioActionPerformed
 
-    private void BtnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelar1ActionPerformed
+    private void jTextFieldPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrecioFocusLost
         // TODO add your handling code here:
-    }//GEN-LAST:event_BtnCancelar1ActionPerformed
+    }//GEN-LAST:event_jTextFieldPrecioFocusLost
 
-    private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
+    private void jTextFieldCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCantActionPerformed
         // TODO add your handling code here:
-        lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        if (TablaInventario.getSelectedRow()==-1){
-            if(TablaInventario.getRowCount()==0){
-                lMessage.setText("Table is Empty");
-            }else{
-                lMessage.setText("You must select a product");
-            }    
-        }else{
-             model.setValueAt(jTextFieldNombre.getText(), TablaInventario.getSelectedRow(), 0);
-             model.setValueAt(jTextFieldCant.getText(), TablaInventario.getSelectedRow(), 1);
-             model.setValueAt(jTextFieldPrecio.getText(), TablaInventario.getSelectedRow(), 2);
+        cantidad = evt.getActionCommand();
+        jTextFieldCant.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextFieldCant.setForeground(java.awt.Color.BLACK);
         }
-            
-        
-        /*if (!jTextFieldNombre.getText().trim().equals("")){
-            model.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
-        } else {
-            lMessage.setText("El nombre no puede quedar en blanco");
+    }//GEN-LAST:event_jTextFieldCantActionPerformed
+
+    private void jTextFieldCantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCantFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCantFocusLost
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+        nombre = evt.getActionCommand();
+        jTextFieldNombre.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateProductName(nombre)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextFieldNombre.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
+    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreFocusLost
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+        fecha = evt.getActionCommand();
+        jTextField7.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFecha(fecha)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField7.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7FocusLost
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+        numfactura = evt.getActionCommand();
+        jTextField6.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateNumFactura(numfactura)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField6.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6FocusLost
+
+    private void BtnAnadir1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnadir1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnAnadir1ActionPerformed
+
+    private void BtnAnadir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadir1MouseClicked
+        // TODO add your handling code here:
+        new Anadir().setVisible(true);
+    }//GEN-LAST:event_BtnAnadir1MouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+        total = evt.getActionCommand();
+        jTextField5.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validatePrecio(total)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField5.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField5FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5FocusLost
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+        direccion = evt.getActionCommand();
+        jTextField4.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateAddress(direccion)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField4.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField4FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField4FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4FocusLost
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+        ruc = evt.getActionCommand();
+        jTextField3.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateRUC(ruc)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField3.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField3FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3FocusLost
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+        cliente = evt.getActionCommand();
+        jTextField2.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFirstName(cliente)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextField2.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField2FocusLost
+        // TODO add your handling code here:
+        /*jTextField1.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateLastName(lastName)){
+            System.out.println( "Valid input.  Thank you." );
+            jTextField1.setForeground(java.awt.Color.BLACK);
         }*/
-    }//GEN-LAST:event_BtnModificarActionPerformed
-
-    private void BtnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitarActionPerformed
-        // TODO add your handling code here:
-        lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        if (TablaInventario.getSelectedRow()==-1){
-            if(TablaInventario.getRowCount()==0){
-                lMessage.setText("Table is Empty");
-            }else{
-                lMessage.setText("You must select a product");
-            }    
-        }else{
-            model.removeRow(TablaInventario.getSelectedRow());
-        }
-        
-    }//GEN-LAST:event_BtnQuitarActionPerformed
+    }//GEN-LAST:event_jTextField2FocusLost
 
     private void TablaInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaInventarioMouseClicked
         // TODO add your handling code here:
@@ -688,6 +686,27 @@ public class Factura extends javax.swing.JFrame {
         jTextFieldCant.setText(model.getValueAt(TablaInventario.getSelectedRow(), 1).toString());
         jTextFieldPrecio.setText(model.getValueAt(TablaInventario.getSelectedRow(), 2).toString());
     }//GEN-LAST:event_TablaInventarioMouseClicked
+
+    private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
+        // TODO add your handling code here:
+        lMessage.setText("");
+        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
+        if (!jTextFieldNombre.getText().trim().equals("")){
+            model.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
+        } else {
+            lMessage.setText("El nombre no puede quedar en blanco");
+        }
+    }//GEN-LAST:event_BtnAgregarActionPerformed
+
+    private void BtnAnadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnadirActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_BtnAnadirActionPerformed
+
+    private void BtnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadirMouseClicked
+        // TODO add your handling code here
+        new AnadirCliente().setVisible(true);
+    }//GEN-LAST:event_BtnAnadirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -736,6 +755,7 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JButton BtnQuitar;
     private javax.swing.JTable TablaInventario;
     private javax.swing.JPanel VentanaMaterial;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
