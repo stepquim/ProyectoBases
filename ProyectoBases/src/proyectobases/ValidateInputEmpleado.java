@@ -91,6 +91,13 @@ public class ValidateInputEmpleado
    {
       return (phone.matches( "593\\d{10}") ||phone.matches( "\\d{9}")) ;
    } // end method validatePhone
+   
+   // validate descripcion
+   public static boolean validateDescripcion( String descripcion )
+   {
+      return descripcion.matches( "[a-zA-Z]{10,40}") ;
+   } // end method validatePhone
+   
 } // end class ValidateInput
 
 /*
