@@ -16,14 +16,15 @@ public class AnadirEmpleado extends javax.swing.JFrame {
 
     public String cedula = "";
     public String nombre = "";
+    public String apellido = "";
     public String telefono = "";
     public String direccion = "";
-    public String idEmpleado = "";
     /**
      * Creates new form Anadir
      */
     public AnadirEmpleado() {
         initComponents();
+        initComponentsPersonalized();
     }
 
     /**
@@ -45,10 +46,10 @@ public class AnadirEmpleado extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -90,14 +91,6 @@ public class AnadirEmpleado extends javax.swing.JFrame {
 
         jLabel1.setText("Ingrese los datos del nuevo empleado:");
 
-        jLabel5.setText("idEmpleado:");
-
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("Nombre:");
 
         jTextField6.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -108,6 +101,19 @@ public class AnadirEmpleado extends javax.swing.JFrame {
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField6ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Apellido:");
+
+        jTextField7.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextField7FocusLost(evt);
+            }
+        });
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
             }
         });
 
@@ -122,11 +128,9 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5))
-                        .addGap(46, 46, 46)
+                            .addComponent(jLabel6))
+                        .addGap(57, 57, 57)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)
                             .addComponent(jTextField1)
                             .addComponent(jTextField2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -138,7 +142,11 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(63, 63, 63)
-                        .addComponent(jTextField6)))
+                        .addComponent(jTextField6))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(63, 63, 63)
+                        .addComponent(jTextField7)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -155,20 +163,19 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel6)
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jButton2.setText("Cancelar");
@@ -217,7 +224,7 @@ public class AnadirEmpleado extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2)
@@ -250,6 +257,14 @@ public class AnadirEmpleado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsPersonalized(){
+        jTextField1.setDocument(new JTextFieldLimit(10));  // Cedula
+        jTextField6.setDocument(new JTextFieldLimit(20));  // Nombre
+        jTextField7.setDocument(new JTextFieldLimit(10));  // Apellido
+        jTextField2.setDocument(new JTextFieldLimit(20));  // Direccion
+        jTextField3.setDocument(new JTextFieldLimit(10));  // Telefono        
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String string = "";
@@ -260,12 +275,12 @@ public class AnadirEmpleado extends javax.swing.JFrame {
         } if (!ValidateInputEmpleado.validateCantidad(nombre)){
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
             string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
+        } if (!ValidateInputEmpleado.validateFecha(apellido)){
+            string = string + "Fecha incorrecta.\n";
         } if (!ValidateInputEmpleado.validatePrecio(telefono)){
             string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
         } if (!ValidateInputEmpleado.validateAddress(direccion)){
             string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(idEmpleado)){
-            string = string + "Fecha incorrecta.\n";
         }
 
         /*
@@ -301,15 +316,6 @@ public class AnadirEmpleado extends javax.swing.JFrame {
     private void jTextField6FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField6FocusLost
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField6FocusLost
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-        idEmpleado = evt.getActionCommand();
-        jTextField4.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateID(idEmpleado)){
-            jTextField4.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -347,6 +353,19 @@ public class AnadirEmpleado extends javax.swing.JFrame {
             jTextField2.setForeground(java.awt.Color.BLACK);
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField7FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField7FocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7FocusLost
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+        apellido = evt.getActionCommand();
+        jTextField7.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateLastName(apellido)){
+            jTextField7.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -388,10 +407,10 @@ public class AnadirEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -402,7 +421,7 @@ public class AnadirEmpleado extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }

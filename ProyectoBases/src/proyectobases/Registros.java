@@ -5,6 +5,8 @@
  */
 package proyectobases;
 
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Stephany
@@ -33,7 +35,7 @@ public class Registros extends javax.swing.JFrame {
         BtnModificar = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaInventario = new javax.swing.JTable();
+        TablaRegistro = new javax.swing.JTable();
         BtnModificar1 = new javax.swing.JButton();
         BtnAnadir1 = new javax.swing.JButton();
         BtnAnadir2 = new javax.swing.JButton();
@@ -70,39 +72,19 @@ public class Registros extends javax.swing.JFrame {
 
         BtnCancelar.setText("Mostrar Registros en base a:");
 
-        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
+        TablaRegistro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "Tipo", "Entrada", "Salida", "Material", "Cantidad", "Destino", "Proovedor"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -113,16 +95,21 @@ public class Registros extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TablaInventario);
-        if (TablaInventario.getColumnModel().getColumnCount() > 0) {
-            TablaInventario.getColumnModel().getColumn(1).setResizable(false);
-            TablaInventario.getColumnModel().getColumn(4).setResizable(false);
+        jScrollPane1.setViewportView(TablaRegistro);
+        if (TablaRegistro.getColumnModel().getColumnCount() > 0) {
+            TablaRegistro.getColumnModel().getColumn(1).setResizable(false);
+            TablaRegistro.getColumnModel().getColumn(4).setResizable(false);
         }
 
         BtnModificar1.setText("Regresar");
         BtnModificar1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 BtnModificar1StateChanged(evt);
+            }
+        });
+        BtnModificar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificar1ActionPerformed(evt);
             }
         });
 
@@ -228,7 +215,10 @@ public class Registros extends javax.swing.JFrame {
 
     private void BtnAnadirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadirMouseClicked
         // TODO add your handling code here
-        new AnadirRegistro().setVisible(true);
+        AnadirRegistro registroWindow = new AnadirRegistro();
+        registroWindow.setVisible(true);
+        DefaultTableModel tRegistro = (DefaultTableModel) TablaRegistro.getModel();
+        registroWindow.setTableReference(tRegistro, TablaRegistro);
     }//GEN-LAST:event_BtnAnadirMouseClicked
 
     private void BtnModificarStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_BtnModificarStateChanged
@@ -260,6 +250,11 @@ public class Registros extends javax.swing.JFrame {
     private void BtnAnadir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAnadir2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnAnadir2ActionPerformed
+
+    private void BtnModificar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificar1ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_BtnModificar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,7 +302,7 @@ public class Registros extends javax.swing.JFrame {
     private javax.swing.JButton BtnEliminar;
     private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnModificar1;
-    private javax.swing.JTable TablaInventario;
+    private javax.swing.JTable TablaRegistro;
     private javax.swing.JPanel VentanaMaterial;
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;

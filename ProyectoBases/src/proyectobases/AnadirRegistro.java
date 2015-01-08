@@ -7,6 +7,8 @@
 package proyectobases;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -22,11 +24,15 @@ public class AnadirRegistro extends javax.swing.JFrame {
     public String cantidad = "";
     public String destino = "";
     public String proveedor = "";
+    public DefaultTableModel tRegistro = null;
+    public JTable tabla = null;
+        
     /**
      * Creates new form Anadir
      */
     public AnadirRegistro() {
         initComponents();
+        initComponentsPersonalized();
     }
 
     /**
@@ -58,7 +64,6 @@ public class AnadirRegistro extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox();
         jComboBox2 = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -164,8 +169,6 @@ public class AnadirRegistro extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -214,11 +217,6 @@ public class AnadirRegistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(66, 66, 66))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,11 +255,6 @@ public class AnadirRegistro extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1)))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -306,6 +299,34 @@ public class AnadirRegistro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsPersonalized(){
+        jTextField2.setDocument(new JTextFieldLimit(5));  // Tipo
+        jTextField4.setDocument(new JTextFieldLimit(10));  // Fecha de salida
+        jTextField5.setDocument(new JTextFieldLimit(10));  // Fecha de entrada
+        jTextField6.setDocument(new JTextFieldLimit(10));  // Material
+        jTextField7.setDocument(new JTextFieldLimit(5));  // Cantidad
+        jTextField8.setDocument(new JTextFieldLimit(20));  // Destino
+        jTextField9.setDocument(new JTextFieldLimit(10));  // Proveedor
+    }
+    
+    public void setTableReference (DefaultTableModel tablaRegistro, JTable table){
+        this.tRegistro = tablaRegistro;
+        this.tabla = table;
+    }
+    
+    private void anadirDatosATabla(){
+        /*jTextField2.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 0).toString());
+        jTextField4.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 1).toString());
+        jTextField5.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 2).toString());
+        jTextField6.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 3).toString());
+        jTextField7.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 4).toString());
+        jTextField8.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 5).toString());
+        jTextField9.setText(tRegistro.getValueAt(tabla.getSelectedRow(), 6).toString());*/
+        tRegistro.addRow(new Object[]{jTextField2.getText(), jTextField4.getText(), jTextField5.getText(),
+                                    jTextField6.getText(), jTextField7.getText(), jTextField8.getText(),
+                                    jTextField9.getText()});
+    }
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
         tipo = evt.getActionCommand();
@@ -319,15 +340,22 @@ public class AnadirRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         String string = "";
         //String.c
-        if (!ValidateInputEmpleado.validateCantidad(tipo)){ 
+        if (!ValidateInputEmpleado.validateTipo(tipo)){ 
             //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
-            string = string + "Cantidad fuera de los limites, maximo 3 digitos.\n";
-        } if (!ValidateInputEmpleado.validatePrecio(fechaEnt)){ 
-            string = string + "Precio fuera de los limites, maximo 3 digitos enteros y 2 decimales.\n";
-        } if (!ValidateInputEmpleado.validateAddress(fechaSal)){
-            string = string + "Direccion fuera de los limites, maximo 40 caracteres.\n";
-        } if (!ValidateInputEmpleado.validateFecha(material)){
+            string = string + "Tipo incorrecto.\n";
+        } if (!ValidateInputEmpleado.validateFecha(fechaEnt)){ 
+            string = string + "Fecha incorrecta. \n";
+        } if (!ValidateInputEmpleado.validateFecha(fechaSal)){
             string = string + "Fecha incorrecta.\n";
+        } if (!ValidateInputEmpleado.validateProductName(material)){ 
+            //JOptionPane.showMessageDialog(null, "Cantidad fuera de los limites, maximo 3 digitos.");
+            string = string + "Material incorrecto.\n";
+        } if (!ValidateInputEmpleado.validateCantidad(cantidad)){ 
+            string = string + "Cantidad fuera de los limites, maximo 5 digitos enteros.\n";
+        } if (!ValidateInputEmpleado.validateAddress(destino)){
+            string = string + "Direccion fuera de los limites, maximo 20 caracteres.\n";
+        } if (!ValidateInputEmpleado.validateFirstName(proveedor)){
+            string = string + "Proveedor incorrecto.\n";
         } 
         
         /*
@@ -341,6 +369,7 @@ public class AnadirRegistro extends javax.swing.JFrame {
         
          if (string.equals("")){
             string = string + "Exito! Sus datos se han guardado";
+            anadirDatosATabla();
         }
       JOptionPane.showMessageDialog(null, string);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -463,7 +492,6 @@ public class AnadirRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

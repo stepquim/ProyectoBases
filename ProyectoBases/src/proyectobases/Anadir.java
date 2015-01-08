@@ -26,6 +26,7 @@ public class Anadir extends javax.swing.JFrame {
      */
     public Anadir() {
         initComponents();
+        initComponentsPersonalized();
     }
 
     /**
@@ -359,6 +360,15 @@ public class Anadir extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsPersonalized(){
+        jTextField1.setDocument(new JTextFieldLimit(15));  // Nombre del producto
+        jTextField2.setDocument(new JTextFieldLimit(5));  // Cantidad
+        jTextField3.setDocument(new JTextFieldLimit(7));  // Precio
+        jTextField4.setDocument(new JTextFieldLimit(20));  // Lugar de adquisicion
+        jTextField5.setDocument(new JTextFieldLimit(10));  // Fecha de compra
+        jTextField6.setDocument(new JTextFieldLimit(20));  // Descripcion (Almacenamiento..)
+    }
+    
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
         productName = evt.getActionCommand();

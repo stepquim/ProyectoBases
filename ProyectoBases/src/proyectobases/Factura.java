@@ -70,6 +70,7 @@ public class Factura extends javax.swing.JFrame {
         BtnQuitar = new javax.swing.JButton();
         lMessage = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaInventario = new javax.swing.JTable();
@@ -375,16 +376,24 @@ public class Factura extends javax.swing.JFrame {
                             .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                .addGap(196, 196, 196)
-                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel12)
-                        .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                            .addGap(10, 10, 10)
-                            .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel7))
+                .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                        .addGap(227, 227, 227)
+                        .addComponent(jLabel7)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         VentanaMaterialLayout.setVerticalGroup(
             VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -407,9 +416,9 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel7)
-                .addGap(13, 13, 13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
                         .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,6 +457,11 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(BtnAnadir)
                     .addComponent(jButton1))
                 .addContainerGap())
+            .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VentanaMaterialLayout.createSequentialGroup()
+                    .addContainerGap(126, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(307, Short.MAX_VALUE)))
         );
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -544,17 +558,19 @@ public class Factura extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-   private void initComponentsPersonalized(){
+   
+    private void initComponentsPersonalized(){
         jTextField2.setDocument(new JTextFieldLimit(20));  //Cliente
         jTextField3.setDocument(new JTextFieldLimit(13));  //RUC
-        jTextField4.setDocument(new JTextFieldLimit(20));  // Direccion
-        jTextField5.setDocument(new JTextFieldLimit(10));
-        jTextField6.setDocument(new JTextFieldLimit(10));
+        jTextField4.setDocument(new JTextFieldLimit(20));  //Direccion
+        jTextField5.setDocument(new JTextFieldLimit(10));  //Total
+        jTextField6.setDocument(new JTextFieldLimit(10));  //Numero de Factura
         jTextField7.setDocument(new JTextFieldLimit(10));  //Fecha
         jTextFieldCant.setDocument(new JTextFieldLimit(10));
         jTextFieldNombre.setDocument(new JTextFieldLimit(10));
         jTextFieldPrecio.setDocument(new JTextFieldLimit(10));
    }
+   
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
         /*jTextField1.setForeground(java.awt.Color.RED);
@@ -891,6 +907,7 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

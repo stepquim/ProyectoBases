@@ -26,6 +26,7 @@ public class AnadirCliente extends javax.swing.JFrame {
      */
     public AnadirCliente() {
         initComponents();
+        initComponentsPersonalized();
     }
 
     /**
@@ -51,9 +52,7 @@ public class AnadirCliente extends javax.swing.JFrame {
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
@@ -122,15 +121,7 @@ public class AnadirCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Ingrese los datos del nuevo cliente:");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
-            }
-        });
-
         jLabel7.setText("Teléfono:");
-
-        jLabel9.setText("idCliente:");
 
         jLabel10.setText("Apellido:");
 
@@ -154,7 +145,6 @@ public class AnadirCliente extends javax.swing.JFrame {
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel9)
                             .addComponent(jLabel10))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,15 +154,14 @@ public class AnadirCliente extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                                         .addComponent(jTextField3)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
-                                        .addComponent(jTextField6))
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                                         .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 161, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -204,11 +193,7 @@ public class AnadirCliente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addGap(4, 4, 4)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
 
         jButton1.setText("Añadir");
@@ -277,6 +262,15 @@ public class AnadirCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initComponentsPersonalized(){
+        jTextField1.setDocument(new JTextFieldLimit(10));  // Cedula
+        jTextField2.setDocument(new JTextFieldLimit(13));  // RUC
+        jTextField3.setDocument(new JTextFieldLimit(20));  // Nombre
+        jTextField7.setDocument(new JTextFieldLimit(20));  // Apellido
+        jTextField4.setDocument(new JTextFieldLimit(20));  // Direccion
+        jTextField5.setDocument(new JTextFieldLimit(10));  // Telefono
+    }
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         string = "";
@@ -374,15 +368,6 @@ public class AnadirCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-        idCliente = evt.getActionCommand();
-        jTextField6.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateID(idCliente)){
-            jTextField6.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
         apellido = evt.getActionCommand();
@@ -440,7 +425,6 @@ public class AnadirCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -450,7 +434,6 @@ public class AnadirCliente extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
 }
