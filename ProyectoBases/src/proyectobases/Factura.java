@@ -25,6 +25,7 @@ public class Factura extends javax.swing.JFrame {
      */
     public Factura() {
         initComponents();
+        initComponentsPersonalized();
     }
 
     /**
@@ -38,11 +39,12 @@ public class Factura extends javax.swing.JFrame {
 
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
+        jTextField8 = new javax.swing.JTextField();
         VentanaMaterial = new javax.swing.JPanel();
         BtnAnadir = new javax.swing.JButton();
         BtnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaInventario = new javax.swing.JTable();
+        TablaAgregados = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -69,6 +71,10 @@ public class Factura extends javax.swing.JFrame {
         lMessage = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TablaInventario = new javax.swing.JTable();
+        BtnAgregar1 = new javax.swing.JButton();
+        BtnAgregar2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu = new javax.swing.JMenu();
 
@@ -85,6 +91,8 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
+        jTextField8.setText("jTextField8");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BtnAnadir.setMnemonic('A');
@@ -100,14 +108,14 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
-        BtnAgregar.setText("Agregar");
+        BtnAgregar.setText("Crear");
         BtnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAgregarActionPerformed(evt);
             }
         });
 
-        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
+        TablaAgregados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -119,7 +127,7 @@ public class Factura extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -130,12 +138,12 @@ public class Factura extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        TablaInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+        TablaAgregados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                TablaInventarioMouseClicked(evt);
+                TablaAgregadosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(TablaInventario);
+        jScrollPane1.setViewportView(TablaAgregados);
 
         jLabel3.setText("Cliente:");
 
@@ -367,7 +375,7 @@ public class Factura extends javax.swing.JFrame {
                             .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 418, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                .addGap(203, 203, 203)
+                .addGap(196, 196, 196)
                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel12)
@@ -401,7 +409,7 @@ public class Factura extends javax.swing.JFrame {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(13, 13, 13)
                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
                         .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -418,14 +426,12 @@ public class Factura extends javax.swing.JFrame {
                             .addComponent(BtnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtnQuitar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                        .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(VentanaMaterialLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addGap(33, 33, 33)))
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldCant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(13, 13, 13)
                         .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,6 +453,50 @@ public class Factura extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel11.setText("Factura");
 
+        TablaInventario.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Existencias", "Precio"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaInventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaInventarioMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(TablaInventario);
+
+        BtnAgregar1.setText("Agregar");
+        BtnAgregar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregar1ActionPerformed(evt);
+            }
+        });
+
+        BtnAgregar2.setText("Llenar manualmente");
+        BtnAgregar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregar2ActionPerformed(evt);
+            }
+        });
+
         jMenu.setText("Menú");
         jMenuBar1.add(jMenu);
 
@@ -457,27 +507,54 @@ public class Factura extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel11)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(90, 90, 90)
+                                .addComponent(BtnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(BtnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(VentanaMaterial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BtnAgregar1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BtnAgregar2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(27, 27, 27))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   private void initComponentsPersonalized(){
+        jTextField2.setDocument(new JTextFieldLimit(20));  //Cliente
+        jTextField3.setDocument(new JTextFieldLimit(13));  //RUC
+        jTextField4.setDocument(new JTextFieldLimit(20));  // Direccion
+        jTextField5.setDocument(new JTextFieldLimit(10));
+        jTextField6.setDocument(new JTextFieldLimit(10));
+        jTextField7.setDocument(new JTextFieldLimit(10));  //Fecha
+        jTextFieldCant.setDocument(new JTextFieldLimit(10));
+        jTextFieldNombre.setDocument(new JTextFieldLimit(10));
+        jTextFieldPrecio.setDocument(new JTextFieldLimit(10));
+   }
     private void jTextField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextField1FocusLost
         // TODO add your handling code here:
         /*jTextField1.setForeground(java.awt.Color.RED);
@@ -499,15 +576,15 @@ public class Factura extends javax.swing.JFrame {
     private void BtnQuitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnQuitarActionPerformed
         // TODO add your handling code here:
         lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        if (TablaInventario.getSelectedRow()==-1){
-            if(TablaInventario.getRowCount()==0){
+        DefaultTableModel model = (DefaultTableModel) TablaAgregados.getModel();
+        if (TablaAgregados.getSelectedRow()==-1){
+            if(TablaAgregados.getRowCount()==0){
                 lMessage.setText("Table is Empty");
             }else{
                 lMessage.setText("You must select a product");
             }
         }else{
-            model.removeRow(TablaInventario.getSelectedRow());
+            model.removeRow(TablaAgregados.getSelectedRow());
         }
 
     }//GEN-LAST:event_BtnQuitarActionPerformed
@@ -515,17 +592,17 @@ public class Factura extends javax.swing.JFrame {
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         // TODO add your handling code here:
         lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        if (TablaInventario.getSelectedRow()==-1){
-            if(TablaInventario.getRowCount()==0){
+        DefaultTableModel model = (DefaultTableModel) TablaAgregados.getModel();
+        if (TablaAgregados.getSelectedRow()==-1){
+            if(TablaAgregados.getRowCount()==0){
                 lMessage.setText("Table is Empty");
             }else{
                 lMessage.setText("You must select a product");
             }
         }else{
-            model.setValueAt(jTextFieldNombre.getText(), TablaInventario.getSelectedRow(), 0);
-            model.setValueAt(jTextFieldCant.getText(), TablaInventario.getSelectedRow(), 1);
-            model.setValueAt(jTextFieldPrecio.getText(), TablaInventario.getSelectedRow(), 2);
+            model.setValueAt(jTextFieldNombre.getText(), TablaAgregados.getSelectedRow(), 0);
+            model.setValueAt(jTextFieldCant.getText(), TablaAgregados.getSelectedRow(), 1);
+            model.setValueAt(jTextFieldPrecio.getText(), TablaAgregados.getSelectedRow(), 2);
         }
 
         /*if (!jTextFieldNombre.getText().trim().equals("")){
@@ -538,48 +615,6 @@ public class Factura extends javax.swing.JFrame {
     private void BtnCancelar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelar1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnCancelar1ActionPerformed
-
-    private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
-        // TODO add your handling code here:
-        precio = evt.getActionCommand();
-        jTextFieldPrecio.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validatePrecio(precio)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextFieldPrecio.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextFieldPrecioActionPerformed
-
-    private void jTextFieldPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrecioFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPrecioFocusLost
-
-    private void jTextFieldCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCantActionPerformed
-        // TODO add your handling code here:
-        cantidad = evt.getActionCommand();
-        jTextFieldCant.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateCantidad(cantidad)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextFieldCant.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextFieldCantActionPerformed
-
-    private void jTextFieldCantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCantFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCantFocusLost
-
-    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
-        // TODO add your handling code here:
-        nombre = evt.getActionCommand();
-        jTextFieldNombre.setForeground(java.awt.Color.RED);
-        if (ValidateInputEmpleado.validateProductName(nombre)){
-            //System.out.println( "Valid input.  Thank you." );
-            jTextFieldNombre.setForeground(java.awt.Color.BLACK);
-        }
-    }//GEN-LAST:event_jTextFieldNombreActionPerformed
-
-    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombreFocusLost
 
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
@@ -679,20 +714,20 @@ public class Factura extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_jTextField2FocusLost
 
-    private void TablaInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaInventarioMouseClicked
+    private void TablaAgregadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaAgregadosMouseClicked
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-        jTextFieldNombre.setText(model.getValueAt(TablaInventario.getSelectedRow(), 0).toString());
-        jTextFieldCant.setText(model.getValueAt(TablaInventario.getSelectedRow(), 1).toString());
-        jTextFieldPrecio.setText(model.getValueAt(TablaInventario.getSelectedRow(), 2).toString());
-    }//GEN-LAST:event_TablaInventarioMouseClicked
+        DefaultTableModel factura = (DefaultTableModel) TablaAgregados.getModel();
+        jTextFieldNombre.setText(factura.getValueAt(TablaAgregados.getSelectedRow(), 0).toString());
+        jTextFieldCant.setText(factura.getValueAt(TablaAgregados.getSelectedRow(), 1).toString());
+        jTextFieldPrecio.setText(factura.getValueAt(TablaAgregados.getSelectedRow(), 2).toString());
+    }//GEN-LAST:event_TablaAgregadosMouseClicked
 
     private void BtnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarActionPerformed
         // TODO add your handling code here:
         lMessage.setText("");
-        DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
+        DefaultTableModel factura = (DefaultTableModel) TablaAgregados.getModel();
         if (!jTextFieldNombre.getText().trim().equals("")){
-            model.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
+            factura.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
         } else {
             lMessage.setText("El nombre no puede quedar en blanco");
         }
@@ -707,6 +742,87 @@ public class Factura extends javax.swing.JFrame {
         // TODO add your handling code here
         new AnadirCliente().setVisible(true);
     }//GEN-LAST:event_BtnAnadirMouseClicked
+
+    private void TablaInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaInventarioMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel inventario = (DefaultTableModel) TablaInventario.getModel();
+        jTextFieldNombre.setText(inventario.getValueAt(TablaInventario.getSelectedRow(), 0).toString());
+        jTextFieldCant.setText(inventario.getValueAt(TablaInventario.getSelectedRow(), 1).toString());
+        jTextFieldPrecio.setText(inventario.getValueAt(TablaInventario.getSelectedRow(), 2).toString());
+    }//GEN-LAST:event_TablaInventarioMouseClicked
+
+    private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
+        // TODO add your handling code here:
+        precio = evt.getActionCommand();
+        jTextFieldPrecio.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validatePrecio(precio)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextFieldPrecio.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextFieldPrecioActionPerformed
+
+    private void jTextFieldPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldPrecioFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPrecioFocusLost
+
+    private void jTextFieldNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombreActionPerformed
+        // TODO add your handling code here:
+        nombre = evt.getActionCommand();
+        jTextFieldNombre.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateProductName(nombre)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextFieldNombre.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextFieldNombreActionPerformed
+
+    private void jTextFieldNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldNombreFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombreFocusLost
+
+    private void jTextFieldCantActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCantActionPerformed
+        // TODO add your handling code here:
+        cantidad = evt.getActionCommand();
+        jTextFieldCant.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateCantidad(cantidad)){
+            //System.out.println( "Valid input.  Thank you." );
+            jTextFieldCant.setForeground(java.awt.Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextFieldCantActionPerformed
+
+    private void jTextFieldCantFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldCantFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCantFocusLost
+
+    private void BtnAgregar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregar1ActionPerformed
+        // TODO add your handling code here:
+        lMessage.setText("");
+        DefaultTableModel factura = (DefaultTableModel) TablaAgregados.getModel();
+        DefaultTableModel inventario = (DefaultTableModel) TablaInventario.getModel();
+         if (TablaInventario.getSelectedRow()==-1){
+            if(TablaInventario.getRowCount()==0){
+                lMessage.setText("Table is Empty");
+            }else{
+                lMessage.setText("You must select a product");
+            }
+        }else{
+            factura.addRow(new Object[]{inventario.getValueAt(TablaInventario.getSelectedRow(), 0),
+                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 1),
+                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 2)});
+
+        }
+    }//GEN-LAST:event_BtnAgregar1ActionPerformed
+
+    private void BtnAgregar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregar2ActionPerformed
+        // TODO add your handling code here:
+        lMessage.setText("");
+        DefaultTableModel inventario = (DefaultTableModel) TablaInventario.getModel();
+        if (!jTextFieldNombre.getText().trim().equals("")){
+            inventario.addRow(new Object[]{jTextFieldNombre.getText(), jTextFieldCant.getText(), jTextFieldPrecio.getText()});
+        } else {
+            lMessage.setText("El nombre no puede quedar en blanco");
+        }
+        
+    }//GEN-LAST:event_BtnAgregar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -748,11 +864,14 @@ public class Factura extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregar;
+    private javax.swing.JButton BtnAgregar1;
+    private javax.swing.JButton BtnAgregar2;
     private javax.swing.JButton BtnAnadir;
     private javax.swing.JButton BtnAnadir1;
     private javax.swing.JButton BtnCancelar1;
     private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnQuitar;
+    private javax.swing.JTable TablaAgregados;
     private javax.swing.JTable TablaInventario;
     private javax.swing.JPanel VentanaMaterial;
     private javax.swing.JButton jButton1;
@@ -771,6 +890,7 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -778,6 +898,7 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextFieldCant;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPrecio;
