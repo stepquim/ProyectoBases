@@ -16,9 +16,7 @@ public class ProyectoBases {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    new Menu().setVisible(true);
-    
-
+        Menu m = new Menu();
     }
     
 }
