@@ -76,8 +76,6 @@ public class Factura extends javax.swing.JFrame {
         TablaInventario = new javax.swing.JTable();
         BtnAgregar1 = new javax.swing.JButton();
         BtnAgregar2 = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu = new javax.swing.JMenu();
 
         jLabel2.setText("Nombre del producto:");
 
@@ -355,11 +353,14 @@ public class Factura extends javax.swing.JFrame {
                                     .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(BtnAnadir1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(BtnAnadir, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(207, 207, 207)
                                     .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(BtnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(35, 35, 35))
+                                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                            .addGap(207, 207, 207)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(VentanaMaterialLayout.createSequentialGroup()
+                                            .addGap(199, 199, 199)
+                                            .addComponent(BtnCancelar1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGap(22, 22, 22))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(VentanaMaterialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(VentanaMaterialLayout.createSequentialGroup()
@@ -511,11 +512,6 @@ public class Factura extends javax.swing.JFrame {
             }
         });
 
-        jMenu.setText("Menú");
-        jMenuBar1.add(jMenu);
-
-        setJMenuBar(jMenuBar1);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -595,9 +591,9 @@ public class Factura extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) TablaAgregados.getModel();
         if (TablaAgregados.getSelectedRow()==-1){
             if(TablaAgregados.getRowCount()==0){
-                lMessage.setText("Table is Empty");
+                lMessage.setText("La tabla está vacía.");
             }else{
-                lMessage.setText("You must select a product");
+                lMessage.setText("Debe escoger un producto.");
             }
         }else{
             model.removeRow(TablaAgregados.getSelectedRow());
@@ -611,9 +607,9 @@ public class Factura extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) TablaAgregados.getModel();
         if (TablaAgregados.getSelectedRow()==-1){
             if(TablaAgregados.getRowCount()==0){
-                lMessage.setText("Table is Empty");
+                lMessage.setText("La tabla está vacía.");
             }else{
-                lMessage.setText("You must select a product");
+                lMessage.setText("Debe escoger un producto.");
             }
         }else{
             model.setValueAt(jTextFieldNombre.getText(), TablaAgregados.getSelectedRow(), 0);
@@ -666,7 +662,7 @@ public class Factura extends javax.swing.JFrame {
 
     private void BtnAnadir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAnadir1MouseClicked
         // TODO add your handling code here:
-        new Anadir().setVisible(true);
+        new Inventario().setVisible(true);
     }//GEN-LAST:event_BtnAnadir1MouseClicked
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
@@ -903,8 +899,6 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;

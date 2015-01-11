@@ -72,24 +72,6 @@ public class Menu extends JFrame {
             }
         });
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         PnlMenu p = new PnlMenu();
         p.add(btnFactura);
         p.add(btnRegistro);
@@ -105,7 +87,7 @@ public class Menu extends JFrame {
 
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        new Factura().setVisible(true);
+        new FacturaP().setVisible(true);
     }
     
     
@@ -124,7 +106,7 @@ public class Menu extends JFrame {
 
     private void btnInventarioMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        new Anadir().setVisible(true);
+        new Inventario().setVisible(true);
     }
     
     class PnlMenu extends javax.swing.JPanel {
