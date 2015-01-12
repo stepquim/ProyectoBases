@@ -31,9 +31,7 @@ public class FacturaP extends JFrame {
     public String cantidad= "";
     public String precio= "";
     
-    DefaultTableModel modelo = new DefaultTableModel();
-    JScrollPane sp1 = new JScrollPane();
-    JScrollBar sb1 = new JScrollBar();
+    
     
     JLabel lbl1 = new JLabel("Cliente:");
     JLabel lbl2 = new JLabel("RUC:");
@@ -64,18 +62,24 @@ public class FacturaP extends JFrame {
     JButton btnCrear = new JButton();
     JButton btnModificar = new JButton();
     JButton btnQuitar = new JButton();
-    JButton btnAnadirProducto = new JButton();
-    JButton btnAnadirCliente = new JButton();
-    JButton btnGenerar = new JButton();
+    JButton btnAgCliente = new JButton();
+    JButton btnAgProduct = new JButton();
+    JButton btnFacturar = new JButton();
     JButton btnRegresar = new JButton();
     JButton btnAgregar = new JButton();
     JButton btnLlenarMan = new JButton();
     
+    PanelTabAgregados pAg = new PanelTabAgregados();
+    DefaultTableModel modelo = new DefaultTableModel();
+    JScrollBar sb1 = new JScrollBar();
+    
+    
     JTable tabAgregados = new JTable();
     JTable tabInventario = new JTable();
-    
-    
-    
+    JScrollPane sp1 = new JScrollPane(tabAgregados,
+           JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+           JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        
     public FacturaP(){
         setVisible(true);
         setTitle("Facturación");
@@ -105,14 +109,12 @@ public class FacturaP extends JFrame {
         lbl9.setBounds(365,170,100,15);
         lbl9.setForeground(Color.white);
         message.setFont(m);
-        message.setBounds(25,255,300,15);
+        message.setBounds(25,255,400,15);
         message.setForeground(Color.ORANGE);
         lbl10.setBounds(295,490,80,15);
         lbl10.setForeground(Color.white);
         
-        
-        
-        
+                        
         txt1.setBounds(135,15,300,20);
         txt2.setBounds(135,45,300,20);
         txt3.setBounds(135,75,300,20);
@@ -134,7 +136,11 @@ public class FacturaP extends JFrame {
         Icon imgLblTit2 = new ImageIcon(getClass().getResource("/imgs/tit3.jpg"));
         Icon imgLblTit3 = new ImageIcon(getClass().getResource("/imgs/tit2.jpg"));
 
-
+        Icon imgBtnAgCliente = new ImageIcon(getClass().getResource("/imgs/btnAgCliente.jpg"));
+        Icon imgBtnAgProduct = new ImageIcon(getClass().getResource("/imgs/btnAgProduct.jpg"));
+        Icon imgBtnFacturar = new ImageIcon(getClass().getResource("/imgs/btnFacturar.jpg"));
+        Icon imgBtnRegresar = new ImageIcon(getClass().getResource("/imgs/btnRegresar.jpg"));
+        
         btnCrear.setBounds(25, 220, 100, 25);
         btnCrear.setIcon(imgBtnCrear);
         btnModificar.setBounds(175, 220, 100, 25);
@@ -149,12 +155,106 @@ public class FacturaP extends JFrame {
         tit3.setIcon(imgLblTit3);
         tit3.setBounds(296, 270, 133, 15);
         
+        btnAgCliente.setBounds(25, 510, 125, 32);
+        btnAgCliente.setIcon(imgBtnAgCliente);
+        btnAgCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgClienteMouseClicked(evt);
+            }
+        });
+        btnAgCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgClienteActionPerformed(evt);
+            }
+        });
+        btnAgProduct.setBounds(25, 552, 125, 32);
+        btnAgProduct.setIcon(imgBtnAgProduct);
+        btnAgProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgProductMouseClicked(evt);
+            }
+        });
+        btnAgProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgProductActionPerformed(evt);
+            }
+        });
+        btnFacturar.setBounds(160, 510, 125, 32);
+        btnFacturar.setIcon(imgBtnFacturar);
+        btnFacturar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnFacturarMouseClicked(evt);
+            }
+        });
+        btnFacturar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFacturarActionPerformed(evt);
+            }
+        });
+        btnRegresar.setBounds(160, 552, 125, 32);
+        btnRegresar.setIcon(imgBtnRegresar);
+        btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegresarMouseClicked(evt);
+            }
+        });
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        
+        pAg.setBounds(30, 285, 399, 200);
+        
         modelo.addColumn("Nombre");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
         tabAgregados.setModel(modelo);
         
+                
+        txt1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt1FocusLost(evt);
+            }
+        });
+        txt1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt1ActionPerformed(evt);
+            }
+        });
         
+        txt2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt2FocusLost(evt);
+            }
+        });
+        txt2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt2ActionPerformed(evt);
+            }
+        });
+        
+        txt3.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt3FocusLost(evt);
+            }
+        });
+        txt3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt3ActionPerformed(evt);
+            }
+        });
+        
+        txt5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txt5FocusLost(evt);
+            }
+        });
+        txt5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt5ActionPerformed(evt);
+            }
+        });
         
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,14 +304,15 @@ public class FacturaP extends JFrame {
 //                TablaAgregadosMouseClicked(evt);
 //            }
 //        });
-        
-        
+      
+//        sp1.setViewportView(tabAgregados);
         
         tabAgregados.setBackground(Color.white);
         tabAgregados.setBounds(30, 285, 399, 200);
-        tabAgregados.setPreferredScrollableViewportSize(new Dimension(399, 200));
         
+             
         Panel p = new Panel();
+        
         p.add(lbl1);
         p.add(lbl2);
         p.add(lbl3);
@@ -240,13 +341,83 @@ public class FacturaP extends JFrame {
         p.add(btnCrear);
         p.add(btnModificar);
         p.add(btnQuitar);
-        p.add(tabAgregados);
+        p.add(btnAgCliente);
+        p.add(btnAgProduct);
+        p.add(btnFacturar);
+        p.add(btnRegresar);
         
+        
+        p.add(pAg.add(tabAgregados));
+        p.add(pAg.add(sb1));
+        
+        pAg.setBorder(new EmptyBorder(5, 5, 5, 5));
+        pAg.setLayout(new BorderLayout(0, 0));
         p.setBorder(new EmptyBorder(5, 5, 5, 5));
         p.setLayout(new BorderLayout(0, 0));
         setContentPane(p);
         
     }
+    
+    private void txt1ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        cliente = evt.getActionCommand();
+        txt1.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFirstName(cliente)){
+            //System.out.println( "Valid input.  Thank you." );
+            txt1.setForeground(java.awt.Color.BLACK);
+        }
+    }  
+    
+    private void txt1FocusLost(java.awt.event.FocusEvent evt) {                                      
+        // TODO add your handling code here:
+        /*jTextField1.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateLastName(lastName)){
+            System.out.println( "Valid input.  Thank you." );
+            jTextField1.setForeground(java.awt.Color.BLACK);
+        }*/
+    } 
+    
+    private void txt2ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        ruc = evt.getActionCommand();
+        txt2.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateRUC(ruc)){
+            //System.out.println( "Valid input.  Thank you." );
+            txt2.setForeground(java.awt.Color.BLACK);
+        }
+    }                                           
+
+    private void txt2FocusLost(java.awt.event.FocusEvent evt) {                                      
+        // TODO add your handling code here:
+    }
+    
+    private void txt3ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        direccion = evt.getActionCommand();
+        txt3.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateAddress(direccion)){
+            //System.out.println( "Valid input.  Thank you." );
+            txt3.setForeground(java.awt.Color.BLACK);
+        }
+    }                                           
+
+    private void txt3FocusLost(java.awt.event.FocusEvent evt) {                                      
+        // TODO add your handling code here:
+    }   
+    
+    private void txt5ActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        fecha = evt.getActionCommand();
+        txt5.setForeground(java.awt.Color.RED);
+        if (ValidateInputEmpleado.validateFecha(fecha)){
+            //System.out.println( "Valid input.  Thank you." );
+            txt5.setForeground(java.awt.Color.BLACK);
+        }
+    }                                           
+
+    private void txt5FocusLost(java.awt.event.FocusEvent evt) {                                      
+        // TODO add your handling code here:
+    }   
     
     private void BtnCrearActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
@@ -299,15 +470,37 @@ public class FacturaP extends JFrame {
 
     }  
     
-    private void TablaAgregadosMouseClicked(java.awt.event.MouseEvent evt) {                                            
+    private void btnAgClienteMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        DefaultTableModel factura = (DefaultTableModel) tabAgregados.getModel();
-        txt6.setText(factura.getValueAt(tabAgregados.getSelectedRow(), 0).toString());
-        txt7.setText(factura.getValueAt(tabAgregados.getSelectedRow(), 1).toString());
-        txt8.setText(factura.getValueAt(tabAgregados.getSelectedRow(), 2).toString());
+        dispose();
+    }
+    private void btnAgClienteActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
     } 
- 
     
+    private void btnAgProductMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        // TODO add your handling code here:
+        dispose();
+    }
+    private void btnAgProductActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    } 
+    
+    private void btnFacturarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        // TODO add your handling code here:
+        dispose();
+    }
+    private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }
+    
+    private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {                                        
+        // TODO add your handling code here:
+        dispose();
+    }
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }  
     
     class Panel extends javax.swing.JPanel {
         public Panel(){
@@ -318,6 +511,19 @@ public class FacturaP extends JFrame {
             Dimension tamanio = getSize();
             ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/imgs/fondoFactura.jpg"));
             g.drawImage(imagenFondo.getImage(),0,0,tamanio.width, tamanio.height, null);
+            setOpaque(false);
+            super.paintComponent(g);
+        }
+    }
+    
+    class PanelTabAgregados extends javax.swing.JPanel {
+        public PanelTabAgregados() {
+            this.setSize(399,200);
+        }
+        @Override
+        public void paintComponent (Graphics g){
+            Dimension tamanio = getSize();
+            g.drawImage(null,0,0,tamanio.width, tamanio.height, null);
             setOpaque(false);
             super.paintComponent(g);
         }

@@ -16,11 +16,14 @@ import javax.swing.border.EmptyBorder;
  * @author Sergio Cardenas
  */
 public class Menu extends JFrame {
+    
+        FacturaP fact;
     public Menu() {
         setVisible(true);
         setTitle("SIFCOM");
         setResizable(false);
         setLocationRelativeTo(null);
+        
         
         JButton btnFactura = new JButton();
         JButton btnRegistro = new JButton();
@@ -87,7 +90,7 @@ public class Menu extends JFrame {
 
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        new FacturaP().setVisible(true);
+        fact = new FacturaP();
     }
     
     

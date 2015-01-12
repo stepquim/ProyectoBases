@@ -9,7 +9,7 @@ package proyectobases;
  *
  * @author Stephany
  */
-public class ProyectoBases {
+public class Main {
 
     /**
      * @param args the command line arguments
