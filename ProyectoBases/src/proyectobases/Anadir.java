@@ -5,7 +5,6 @@
  */
 
 package proyectobases;
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -407,22 +406,13 @@ public class Anadir extends javax.swing.JFrame {
         } if (!ValidateInputEmpleado.validateDescripcion(almacenamiento)){
             string = string + "Descripcion incorrecta.\n";
         } 
-        
-        /*
-        
-        GUARDAR DATOS
-       
-        
-        */
-       
-         if (string.equals("")){
-            string = string + "Exito! Sus datos se han guardado";
-        }
-         if (string.equals("Exito! Sus datos se han guardado")){
+
+        if (string.equals("Exito! Sus datos se han guardado")) {
             DefaultTableModel model = (DefaultTableModel) TablaInventario.getModel();
-            model.addRow(new Object[]{jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Float.parseFloat(jTextField3.getText()), 
-                                      jTextField4.getText(), jTextField5.getText(), jTextField6.getText()});
-        } 
+            model.addRow(new Object[]{jTextField1.getText(), Integer.parseInt(jTextField2.getText()), Float.parseFloat(jTextField3.getText()),
+                jTextField4.getText(), jTextField5.getText(), jTextField6.getText()});
+        }
+         
       JOptionPane.showMessageDialog(null, string, "Inventario",JOptionPane.NO_OPTION);
     }//GEN-LAST:event_BtnAgregar1ActionPerformed
 

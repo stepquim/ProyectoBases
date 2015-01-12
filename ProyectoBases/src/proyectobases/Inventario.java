@@ -6,6 +6,7 @@
 
 package proyectobases;
 
+import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -21,6 +22,10 @@ public class Inventario extends javax.swing.JFrame {
     public String direccion = "";
     public String fecha = "";
     public String almacenamiento = "";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+    static final String DB_URL = "jdbc:mysql://localhost/proyecto";
+    static final String USER = "root";
+    static final String PASS = "admin1234";
     /**
      * Creates new form Anadir
      */
@@ -407,13 +412,33 @@ public class Inventario extends javax.swing.JFrame {
         } if (!ValidateInputEmpleado.validateDescripcion(almacenamiento)){
             string = string + "Descripcion incorrecta.\n";
         } 
+                
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            stmt = conn.createStatement();
+
+            String sql = "INSERT INTO Material" + 
+                    "(`idproducto`, `nombre`, `cantidad`, `precio`, `fechacompra`, `descripcion`, `idproveedor`)" +
+                    "VALUES (NULL, '" + jTextField1.getText() + "','" +
+                    Integer.parseInt(jTextField2.getText()) + "','" +
+                    Float.parseFloat(jTextField3.getText()) + "'," +
+                    "NULL, NULL, NULL)";
+            stmt.executeUpdate(sql);
+            System.out.println("Whahooooooooo!");
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }
+
+        if (string.equals("")) {
+            string = string + "Exito! Sus datos se han guardado";
+        }
         
-        /*
-        
-        GUARDAR DATOS
-       
-        
-        */
        
          if (string.equals("")){
             string = string + "Exito! Sus datos se han guardado";
