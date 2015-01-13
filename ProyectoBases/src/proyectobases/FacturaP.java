@@ -69,16 +69,14 @@ public class FacturaP extends JFrame {
     JButton btnAgregar = new JButton();
     JButton btnLlenarMan = new JButton();
     
-    PanelTabAgregados pAg = new PanelTabAgregados();
+    
     DefaultTableModel modelo = new DefaultTableModel();
     JScrollBar sb1 = new JScrollBar();
     
     
     JTable tabAgregados = new JTable();
     JTable tabInventario = new JTable();
-    JScrollPane sp1 = new JScrollPane(tabAgregados,
-           JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-           JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+    JScrollPane sp1 = new JScrollPane(tabAgregados);
         
     public FacturaP(){
         setVisible(true);
@@ -132,9 +130,7 @@ public class FacturaP extends JFrame {
         Icon imgBtnModificar = new ImageIcon(getClass().getResource("/imgs/btnModificar.jpg"));
         Icon imgBtnQuitar = new ImageIcon(getClass().getResource("/imgs/btnQuitar.jpg"));
         
-        Icon imgLblTit1 = new ImageIcon(getClass().getResource("/imgs/tit1.jpg"));
-        Icon imgLblTit2 = new ImageIcon(getClass().getResource("/imgs/tit3.jpg"));
-        Icon imgLblTit3 = new ImageIcon(getClass().getResource("/imgs/tit2.jpg"));
+        
 
         Icon imgBtnAgCliente = new ImageIcon(getClass().getResource("/imgs/btnAgCliente.jpg"));
         Icon imgBtnAgProduct = new ImageIcon(getClass().getResource("/imgs/btnAgProduct.jpg"));
@@ -148,12 +144,6 @@ public class FacturaP extends JFrame {
         btnQuitar.setBounds(335, 220, 100, 25);
         btnQuitar.setIcon(imgBtnQuitar);
         
-        tit1.setIcon(imgLblTit1);
-        tit1.setBounds(30, 270, 133, 15);
-        tit2.setIcon(imgLblTit2);
-        tit2.setBounds(163, 270, 133, 15);
-        tit3.setIcon(imgLblTit3);
-        tit3.setBounds(296, 270, 133, 15);
         
         btnAgCliente.setBounds(25, 510, 125, 32);
         btnAgCliente.setIcon(imgBtnAgCliente);
@@ -204,7 +194,7 @@ public class FacturaP extends JFrame {
             }
         });
         
-        pAg.setBounds(30, 285, 399, 200);
+        
         
         modelo.addColumn("Nombre");
         modelo.addColumn("Cantidad");
@@ -308,11 +298,12 @@ public class FacturaP extends JFrame {
 //        sp1.setViewportView(tabAgregados);
         
         tabAgregados.setBackground(Color.white);
-        tabAgregados.setBounds(30, 285, 399, 200);
+//        tabAgregados.setBounds(30, 285, 399, 200);
+        sp1.setBounds(30, 270, 399, 200);
         
-             
+        
         Panel p = new Panel();
-        
+                                 
         p.add(lbl1);
         p.add(lbl2);
         p.add(lbl3);
@@ -324,9 +315,7 @@ public class FacturaP extends JFrame {
         p.add(lbl9);
         p.add(message);
         p.add(lbl10);
-        p.add(tit1);
-        p.add(tit2);
-        p.add(tit3);
+                
         
         p.add(txt1);
         p.add(txt2);
@@ -337,7 +326,7 @@ public class FacturaP extends JFrame {
         p.add(txt7);
         p.add(txt8);
         p.add(txt9);
-        
+                        
         p.add(btnCrear);
         p.add(btnModificar);
         p.add(btnQuitar);
@@ -345,13 +334,8 @@ public class FacturaP extends JFrame {
         p.add(btnAgProduct);
         p.add(btnFacturar);
         p.add(btnRegresar);
-        
-        
-        p.add(pAg.add(tabAgregados));
-        p.add(pAg.add(sb1));
-        
-        pAg.setBorder(new EmptyBorder(5, 5, 5, 5));
-        pAg.setLayout(new BorderLayout(0, 0));
+        p.add(sp1);
+                
         p.setBorder(new EmptyBorder(5, 5, 5, 5));
         p.setLayout(new BorderLayout(0, 0));
         setContentPane(p);
@@ -518,7 +502,7 @@ public class FacturaP extends JFrame {
     
     class PanelTabAgregados extends javax.swing.JPanel {
         public PanelTabAgregados() {
-            this.setSize(399,200);
+            this.setSize(499,300);
         }
         @Override
         public void paintComponent (Graphics g){
@@ -528,4 +512,6 @@ public class FacturaP extends JFrame {
             super.paintComponent(g);
         }
     }
+    
+   
 }
