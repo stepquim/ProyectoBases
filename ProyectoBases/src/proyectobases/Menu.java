@@ -91,6 +91,7 @@ public class Menu extends JFrame {
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
         fact = new FacturaP();
+        this.hide();
     }
     
     

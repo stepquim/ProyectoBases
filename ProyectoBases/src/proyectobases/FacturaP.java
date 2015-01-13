@@ -68,8 +68,8 @@ public class FacturaP extends JFrame {
     JButton btnCrear = new JButton();
     JButton btnModificar = new JButton();
     JButton btnQuitar = new JButton();
-    JButton btnAgCliente = new JButton();
-    JButton btnAgProduct = new JButton();
+    JButton btnNewProduct = new JButton();
+    JButton btnProductos = new JButton();
     JButton btnFacturar = new JButton();
     JButton btnRegresar = new JButton();
     JButton btnAgregar = new JButton();
@@ -88,7 +88,7 @@ public class FacturaP extends JFrame {
         setVisible(true);
         setTitle("Facturación");
         setResizable(false);
-        setSize(512, 634);
+        setSize(470, 500);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                
@@ -125,7 +125,7 @@ public class FacturaP extends JFrame {
         message.setFont(m);
         message.setBounds(25,270,400,15);
         message.setForeground(Color.ORANGE);
-        lbl10.setBounds(295,505,80,15);
+        lbl10.setBounds(295,405,80,15);
         lbl10.setForeground(Color.white);
         
                         
@@ -138,7 +138,7 @@ public class FacturaP extends JFrame {
         txt6.setBounds(25,210,100,20);
         txt7.setBounds(192,210,70,20);
         txt8.setBounds(365,210,70,20);
-        txt9.setBounds(335,505,95,20);
+        txt9.setBounds(335,405,95,20);
         txt9.setEditable(false);
         
         
@@ -161,31 +161,23 @@ public class FacturaP extends JFrame {
         btnQuitar.setIcon(imgBtnQuitar);
         
         
-        btnAgCliente.setBounds(25, 525, 125, 32);
-        btnAgCliente.setIcon(imgBtnAgCliente);
-        btnAgCliente.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgClienteMouseClicked(evt);
-            }
-        });
-        btnAgCliente.addActionListener(new java.awt.event.ActionListener() {
+        btnNewProduct.setBounds(165, 160, 125, 32);
+        btnNewProduct.setIcon(imgBtnAgCliente);        
+        
+        btnNewProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgClienteActionPerformed(evt);
             }
         });
-        btnAgProduct.setBounds(25, 567, 125, 32);
-        btnAgProduct.setIcon(imgBtnAgProduct);
-        btnAgProduct.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgProductMouseClicked(evt);
-            }
-        });
-        btnAgProduct.addActionListener(new java.awt.event.ActionListener() {
+        btnProductos.setBounds(165,160, 125, 32);
+        btnProductos.setIcon(imgBtnAgProduct);
+        
+        btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgProductActionPerformed(evt);
             }
         });
-        btnFacturar.setBounds(160, 525, 125, 32);
+        btnFacturar.setBounds(25, 430, 125, 32);
         btnFacturar.setIcon(imgBtnFacturar);
         btnFacturar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -197,7 +189,7 @@ public class FacturaP extends JFrame {
                 btnFacturarActionPerformed(evt);
             }
         });
-        btnRegresar.setBounds(160, 567, 125, 32);
+        btnRegresar.setBounds(305, 430, 125, 32);
         btnRegresar.setIcon(imgBtnRegresar);
         btnRegresar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -359,7 +351,7 @@ public class FacturaP extends JFrame {
         
         tabAgregados.setBackground(Color.white);
 //        tabAgregados.setBounds(30, 285, 399, 200);
-        sp1.setBounds(30, 285, 399, 200);
+        sp1.setBounds(30, 200, 399, 200);
         
         
         Panel p = new Panel();
@@ -376,10 +368,7 @@ public class FacturaP extends JFrame {
         p.add(lbl3);
         p.add(lbl4);
         p.add(lbl5);
-        p.add(lbl6);
-        p.add(lbl7);
-        p.add(lbl8);
-        p.add(lbl9);
+        
         p.add(message);
         p.add(lbl10);
                 
@@ -389,16 +378,11 @@ public class FacturaP extends JFrame {
         p.add(txt3);
         p.add(txt4);
         p.add(txt5);
-        p.add(txt6);
-        p.add(txt7);
-        p.add(txt8);
         p.add(txt9);
                         
-        p.add(btnCrear);
-        p.add(btnModificar);
-        p.add(btnQuitar);
-        p.add(btnAgCliente);
-        p.add(btnAgProduct);
+        
+        p.add(btnNewProduct);
+        p.add(btnProductos);
         p.add(btnFacturar);
         p.add(btnRegresar);
         p.add(sp1);
@@ -412,23 +396,26 @@ public class FacturaP extends JFrame {
     
     public void opCompraMouseClicked(java.awt.event.MouseEvent evt){
         if(op_compra.isSelected() == true){
-            txt6.setEditable(false);
-            txt7.setEditable(false);
-            txt8.setEditable(false);
-            btnCrear.setEnabled(false);
-            btnModificar.setEnabled(false);
-            btnQuitar.setEnabled(false);
+            btnProductos.setVisible(false);
+            btnNewProduct.setVisible(true);
+            btnNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgClienteMouseClicked(evt);
+            }
+        });
+            
         }
     }
     
     public void opVentaMouseClicked(java.awt.event.MouseEvent evt){
         if(op_venta.isSelected() == true){
-            txt6.setEditable(true);
-            txt7.setEditable(true);
-            txt8.setEditable(true);
-            btnCrear.setEnabled(true);
-            btnModificar.setEnabled(true);
-            btnQuitar.setEnabled(true);
+            btnNewProduct.setVisible(false);
+            btnProductos.setVisible(true);
+            btnProductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgProductMouseClicked(evt);
+            }
+        });
         }
     }
     
