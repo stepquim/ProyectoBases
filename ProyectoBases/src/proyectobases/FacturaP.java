@@ -166,7 +166,7 @@ public class FacturaP extends JFrame {
         
         btnNewProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgClienteActionPerformed(evt);
+                btnNewProductoActionPerformed(evt);
             }
         });
         btnProductos.setBounds(165,160, 125, 32);
@@ -400,7 +400,7 @@ public class FacturaP extends JFrame {
             btnNewProduct.setVisible(true);
             btnNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnAgClienteMouseClicked(evt);
+                btnNewProductoMouseClicked(evt);
             }
         });
             
@@ -531,17 +531,17 @@ public class FacturaP extends JFrame {
 
     }  
     
-    private void btnAgClienteMouseClicked(java.awt.event.MouseEvent evt) {                                        
+    private void btnNewProductoMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        dispose();
+        
     }
-    private void btnAgClienteActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void btnNewProductoActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     } 
     
     private void btnAgProductMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        dispose();
+        new Productos();
     }
     private void btnAgProductActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
