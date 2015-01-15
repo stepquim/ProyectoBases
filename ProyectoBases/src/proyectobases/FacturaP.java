@@ -85,10 +85,10 @@ public class FacturaP extends JFrame {
     JScrollPane sp1 = new JScrollPane(tabAgregados);
         
     public FacturaP(){
-        setVisible(true);
         setTitle("Facturación");
-        setResizable(false);
         setSize(470, 500);
+        setVisible(true);
+        setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                
