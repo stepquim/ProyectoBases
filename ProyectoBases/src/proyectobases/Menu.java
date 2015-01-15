@@ -8,6 +8,8 @@ package proyectobases;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -17,13 +19,13 @@ import javax.swing.border.EmptyBorder;
  */
 public class Menu extends JFrame {
     
-        FacturaP fact;
+        Facturacion fact;
     public Menu() {
         setVisible(true);
         setTitle("SIFCOM");
         setResizable(false);
         setLocationRelativeTo(null);
-        
+        cerrar();
         
         JButton btnFactura = new JButton();
         JButton btnRegistro = new JButton();
@@ -33,7 +35,6 @@ public class Menu extends JFrame {
         Icon imgBtnRegistro = new ImageIcon(getClass().getResource("/imgs/btnRegistro.jpg"));
         Icon imgBtnInventario = new ImageIcon(getClass().getResource("/imgs/btnInventario.jpg"));
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(400, 40, 640, 640);
        
         btnFactura.setBounds(40, 380, 154, 39);
@@ -84,13 +85,30 @@ public class Menu extends JFrame {
         setContentPane(p);
     }
     
+     
+    
+    public void cerrar(){
+        addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                int v = JOptionPane.showConfirmDialog(new JFrame(), "Está seguro que desea salir?", "Advertencia.", JOptionPane.YES_NO_OPTION);
+                if(v == JOptionPane.YES_OPTION){
+                    System.exit(0);
+                }
+                else if(v == JOptionPane.NO_OPTION){
+                    setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+                }     
+            }
+        });
+        
+    }
+    
     private void btnFacturaActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
     }                                          
 
     private void btnFacturaMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        fact = new FacturaP();
+        fact = new Facturacion();
         this.hide();
     }
     
