@@ -10,6 +10,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,12 +24,13 @@ public class NuevoProducto extends JFrame {
     JLabel lblPrec = new JLabel("Precio:");
     JLabel lblFechaIng = new JLabel("Fecha Ingreso:");
     JLabel lblDescrip = new JLabel("Descripción");
+    JLabel message = new JLabel();
 
     JTextField txtProve = new JTextField();
     JTextField txtNom = new JTextField();
     JTextField txtCant = new JTextField();
-    JTextField txtPrec = new JTextField("Hay que verificar");
-    JTextField txtFechaIng = new JTextField("Formato: dd/mm/aaaa");
+    JTextField txtPrec = new JTextField();
+    JTextField txtFechaIng = new JTextField();
     JTextField txtDescrip = new JTextField();
 
     Icon imgBtnAgregar = new ImageIcon(getClass().getResource("/imgs/btnAgMaterial.jpg"));
@@ -58,6 +60,10 @@ public class NuevoProducto extends JFrame {
         lblFechaIng.setForeground(Color.white);
         lblDescrip.setBounds(15,180,100,15);
         lblDescrip.setForeground(Color.white);
+        Font f = new Font("Arial", Font.BOLD, 14);
+        message.setFont(f);
+        message.setBounds(15,320,350,15);
+        message.setForeground(Color.YELLOW);
         
         txtProve.setBounds(115,25,275,20);
         txtNom.setBounds(115,55,275,20);
@@ -98,6 +104,7 @@ public class NuevoProducto extends JFrame {
         p.add(lblPrec);
         p.add(lblFechaIng);
         p.add(lblDescrip);
+        p.add(message);
         
         p.add(txtProve);
         p.add(txtNom);
@@ -120,14 +127,33 @@ public class NuevoProducto extends JFrame {
     }
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+        
     }  
     
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        this.dispose();
     }
-    private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {                                           
+    private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
+        //Acceder al getter de la tabla en facturacion
+        message.setText(""); 
+        if(!txtProve.getText().trim().equals("") && !txtNom.getText().trim().equals("") && !txtCant.getText().trim().equals("") && !txtPrec.getText().trim().equals("") && !txtFechaIng.getText().trim().equals("") && !txtDescrip.getText().trim().equals("")){
+            System.out.println("Exito al ingresar los datos");
+            txtProve.setText("");
+            txtNom.setText("");
+            txtCant.setText("");
+            txtPrec.setText("");
+            txtFechaIng.setText("");
+            txtDescrip.setText("");
+        }
+        else if(txtProve.getText().trim().equals("") || txtNom.getText().trim().equals("") || txtCant.getText().trim().equals("") || txtPrec.getText().trim().equals("") || txtFechaIng.getText().trim().equals("") || txtDescrip.getText().trim().equals("")){
+            message.setText("Ningún campo puede quedar en blanco.");
+        }
+        
+//            factura.addRow(new Object[]{inventario.getValueAt(TablaInventario.getSelectedRow(), 0),
+//                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 1),
+//                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 2)});
+        
     }  
     class Panel extends javax.swing.JPanel {
         public Panel(){

@@ -11,6 +11,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.LinkedList;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -86,8 +88,7 @@ public class Facturacion extends JFrame {
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               
+        setDefaultCloseOperation(0);
         
         op_compra.setBounds(135,5,90,15);
         op_compra.setOpaque(false);
@@ -317,7 +318,8 @@ public class Facturacion extends JFrame {
         tabAgregados.setBackground(Color.white);
         sp1.setBounds(30, 200, 399, 200);
         
-               
+        cerrar();
+        
         Panel p = new Panel();
         
         grupo.add(op_compra);
@@ -573,7 +575,17 @@ public class Facturacion extends JFrame {
 
     private void txt8FocusLost(java.awt.event.FocusEvent evt) {                                           
         // TODO add your handling code here:
-    } 
+    }
+    
+    public void cerrar(){
+       addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e){
+                if(e.WINDOW_CLOSED == 1){
+                    new Menu();
+                }
+            }
+        }); 
+    }
     
     class Panel extends javax.swing.JPanel {
         public Panel(){
