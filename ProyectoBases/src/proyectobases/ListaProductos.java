@@ -22,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ListaProductos extends JFrame {
     
+    JLabel message = new JLabel();
     JLabel lblListProducts = new JLabel("Listado de Productos:");
     
     Icon imgBtnAgregar = new ImageIcon(getClass().getResource("/imgs/btnAgMaterial.jpg"));
@@ -37,11 +38,12 @@ public class ListaProductos extends JFrame {
     public ListaProductos(){
         setVisible(true);
         setSize(430,380);
-        setTitle("Añadir producto existente.");
+        setTitle("Añadir producto existente");
         setResizable(false);
         setLocation(900, 200);
                 
-        
+        message.setBounds(15,270,300,15);
+        message.setForeground(Color.ORANGE);
         lblListProducts.setBounds(15,30,250,15);
         lblListProducts.setForeground(Color.white);
         
@@ -81,6 +83,7 @@ public class ListaProductos extends JFrame {
         Panel p = new Panel();
         
         p.add(lblListProducts);
+        p.add(message);
         p.add(sp1);
         
         p.add(btnAnadir);
@@ -102,10 +105,20 @@ public class ListaProductos extends JFrame {
     
     private void btnAnadirMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        this.dispose();
     }
     private void btnAnadirActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+        message.setText("");
+        DefaultTableModel model = (DefaultTableModel)tabListProducts.getModel();
+        if (tabListProducts.getSelectedRow() == -1){
+            if(tabListProducts.getRowCount() == 0){
+                message.setText("La tabla está vacía.");
+            }else{
+                message.setText("Debe escoger un producto.");
+            }
+        }else{
+            System.out.println("Hacer setter y getters!");
+        }
     }  
     class Panel extends javax.swing.JPanel {
         public Panel(){

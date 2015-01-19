@@ -20,6 +20,7 @@ import javax.swing.border.EmptyBorder;
 public class Menu extends JFrame {
     
         Facturacion fact;
+        RegistrosP reg;
     public Menu() {
         setVisible(true);
         setTitle("SIFCOM");
@@ -115,11 +116,13 @@ public class Menu extends JFrame {
     
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+        
     }                                          
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        new Registros().setVisible(true);
+        reg = new RegistrosP();
+        this.hide();
     }
     
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {                                           
