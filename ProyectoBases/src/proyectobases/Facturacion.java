@@ -122,7 +122,7 @@ public class Facturacion extends JFrame {
         lbl9.setBounds(365,185,100,15);
         lbl9.setForeground(Color.white);
         message.setFont(m);
-        message.setBounds(25,270,400,15);
+        message.setBounds(25,415,400,15);
         message.setForeground(Color.ORANGE);
         lbl10.setBounds(295,405,80,15);
         lbl10.setForeground(Color.white);
@@ -375,6 +375,7 @@ public class Facturacion extends JFrame {
         if(op_compra.isSelected() == true){
             btnProductos.setEnabled(false);
             btnNewProduct.setEnabled(true);
+            lbl2.setText("RUC:");
             txt1.setEditable(true);
             txt2.setEditable(true);
             txt3.setEditable(true);
@@ -382,12 +383,14 @@ public class Facturacion extends JFrame {
             txt6.setEditable(true);
             txt7.setEditable(true);
             txt8.setEditable(true);
+            message.setText("");
         }
-       
+     
     }
     
     public void opVentaMouseClicked(java.awt.event.MouseEvent evt){
         if(op_venta.isSelected() == true){
+            lbl2.setText("RUC/Cédula:");
             btnNewProduct.setEnabled(false);
             btnProductos.setEnabled(true);
             txt1.setEditable(true);
@@ -397,6 +400,7 @@ public class Facturacion extends JFrame {
             txt6.setEditable(true);
             txt7.setEditable(true);
             txt8.setEditable(true);
+            message.setText("");
         }
     }
     
@@ -548,16 +552,22 @@ public class Facturacion extends JFrame {
     
     private void btnFacturarMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
-        dispose();
     }
     private void btnFacturarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
+        if (!txt1.getText().trim().equals("") && !txt2.getText().trim().equals("") && !txt3.getText().trim().equals("") && !txt5.getText().trim().equals("")){
+            message.setText("Verificando ...");
+            message.setForeground(Color.GREEN);
+        }else{
+            message.setText("Ningún campo puede quedar vacío.");
+        }
+        System.out.println("Has dado clic");
     }
         
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {                                        
         // TODO add your handling code here:
         this.dispose();
-        new Menu().show();
+        new Menu().setVisible(true);
     }
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {                                           
         // TODO add your handling code here:
