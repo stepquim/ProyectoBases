@@ -134,6 +134,8 @@ public class Menu extends JFrame {
         new Inventario().setVisible(true);
     }
     
+    
+    
     class PnlMenu extends javax.swing.JPanel {
         public PnlMenu(){
             this.setSize(640,640);

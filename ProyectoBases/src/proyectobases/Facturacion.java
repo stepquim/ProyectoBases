@@ -56,6 +56,7 @@ public class Facturacion extends JFrame {
     JLabel tit1 = new JLabel();
     JLabel tit2 = new JLabel();
     JLabel tit3 = new JLabel();
+    JLabel formatoFecha = new JLabel("dd/mm/aaaa");
     
     JTextField txt1 = new JTextField();
     JTextField txt2 = new JTextField();
@@ -89,6 +90,7 @@ public class Facturacion extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(0);
+        initComponentsPersonalizated();
         
         op_compra.setBounds(135,5,90,15);
         op_compra.setOpaque(false);
@@ -124,18 +126,26 @@ public class Facturacion extends JFrame {
         message.setForeground(Color.ORANGE);
         lbl10.setBounds(295,405,80,15);
         lbl10.setForeground(Color.white);
-        
+        formatoFecha.setBounds(305,140,200,20);
+        formatoFecha.setForeground(Color.orange);
                         
         txt1.setBounds(135,30,300,20);
+        txt1.setEditable(false);
         txt2.setBounds(135,60,300,20);
+        txt2.setEditable(false);
         txt3.setBounds(135,90,300,20);
-        txt4.setBounds(135,120,100,20);
+        txt3.setEditable(false);
+        txt4.setBounds(135,120,100,20); //
         txt4.setEditable(false);
         txt5.setBounds(305,120,130,20);
+        txt5.setEditable(false);
         txt6.setBounds(25,210,100,20);
+        txt6.setEditable(false);
         txt7.setBounds(192,210,70,20);
+        txt7.setEditable(false);
         txt8.setBounds(365,210,70,20);
-        txt9.setBounds(335,405,95,20);
+        txt8.setEditable(false);
+        txt9.setBounds(335,405,95,20); //
         txt9.setEditable(false);
         
         
@@ -337,7 +347,7 @@ public class Facturacion extends JFrame {
         
         p.add(message);
         p.add(lbl10);
-                
+        p.add(formatoFecha);        
         
         p.add(txt1);
         p.add(txt2);
@@ -364,7 +374,14 @@ public class Facturacion extends JFrame {
     public void opCompraMouseClicked(java.awt.event.MouseEvent evt){
         if(op_compra.isSelected() == true){
             btnProductos.setEnabled(false);
-            btnNewProduct.setEnabled(true);                               
+            btnNewProduct.setEnabled(true);
+            txt1.setEditable(true);
+            txt2.setEditable(true);
+            txt3.setEditable(true);
+            txt5.setEditable(true);
+            txt6.setEditable(true);
+            txt7.setEditable(true);
+            txt8.setEditable(true);
         }
        
     }
@@ -373,6 +390,13 @@ public class Facturacion extends JFrame {
         if(op_venta.isSelected() == true){
             btnNewProduct.setEnabled(false);
             btnProductos.setEnabled(true);
+            txt1.setEditable(true);
+            txt2.setEditable(true);
+            txt3.setEditable(true);
+            txt5.setEditable(true);
+            txt6.setEditable(true);
+            txt7.setEditable(true);
+            txt8.setEditable(true);
         }
     }
     
@@ -430,6 +454,11 @@ public class Facturacion extends JFrame {
         if (ValidateInputEmpleado.validateFecha(fecha)){
             //System.out.println( "Valid input.  Thank you." );
             txt5.setForeground(java.awt.Color.BLACK);
+            formatoFecha.setText("Formato correcto");
+            formatoFecha.setForeground(Color.GREEN);
+        }else{
+            formatoFecha.setText("Formato incorrecto");
+            formatoFecha.setForeground(Color.RED);
         }
     }                                           
 
@@ -587,6 +616,15 @@ public class Facturacion extends JFrame {
         }); 
     }
     
+    private void initComponentsPersonalizated(){
+        txt1.setDocument(new JTextFieldLimit(30));
+        txt2.setDocument(new JTextFieldLimit(13));
+        txt3.setDocument(new JTextFieldLimit(50));
+        txt4.setDocument(new JTextFieldLimit(4));
+        txt5.setDocument(new JTextFieldLimit(10));
+        txt9.setDocument(new JTextFieldLimit(10));
+    }
+    
     class Panel extends javax.swing.JPanel {
         public Panel(){
             this.setSize(1024,634);
@@ -601,18 +639,4 @@ public class Facturacion extends JFrame {
         }
     }
     
-    class PanelTabAgregados extends javax.swing.JPanel {
-        public PanelTabAgregados() {
-            this.setSize(499,300);
-        }
-        @Override
-        public void paintComponent (Graphics g){
-            Dimension tamanio = getSize();
-            g.drawImage(null,0,0,tamanio.width, tamanio.height, null);
-            setOpaque(false);
-            super.paintComponent(g);
-        }
-    }
-    
-   
 }

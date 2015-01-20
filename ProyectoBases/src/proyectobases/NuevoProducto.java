@@ -31,13 +31,14 @@ public class NuevoProducto extends JFrame {
     JTextField txtCant = new JTextField();
     JTextField txtPrec = new JTextField();
     JTextField txtFechaIng = new JTextField();
-    JTextField txtDescrip = new JTextField();
+    JTextArea txtDescrip = new JTextArea();
 
     Icon imgBtnAgregar = new ImageIcon(getClass().getResource("/imgs/btnAgMaterial.jpg"));
     Icon imgBtnRegresar = new ImageIcon(getClass().getResource("/imgs/btnRegresar.jpg"));
     
     JButton btnAnadir = new JButton();
     JButton btnRegresar = new JButton();
+    JScrollPane sp1 = new JScrollPane(txtDescrip);
         
         
     public NuevoProducto(){
@@ -46,7 +47,8 @@ public class NuevoProducto extends JFrame {
         setTitle("Añadir nuevo material");
         setResizable(false);
         setLocation(900, 200);
-                
+        initComponentsPersonalizated();      
+        
         
         lblProve.setBounds(15,30,100,15);
         lblProve.setForeground(Color.white);
@@ -70,7 +72,7 @@ public class NuevoProducto extends JFrame {
         txtCant.setBounds(115,85,275,20);
         txtPrec.setBounds(115,115,275,20);
         txtFechaIng.setBounds(115,145,275,20);
-        txtDescrip.setBounds(15,195,375,120);
+        sp1.setBounds(15,195,375,120);
                 
         btnAnadir.setBounds(15,340,125,32);
         btnAnadir.setIcon(imgBtnAgregar);
@@ -111,7 +113,7 @@ public class NuevoProducto extends JFrame {
         p.add(txtCant);
         p.add(txtPrec);
         p.add(txtFechaIng);
-        p.add(txtDescrip);
+        p.add(sp1);
         p.add(btnAnadir);
         p.add(btnRegresar);
         
@@ -150,11 +152,23 @@ public class NuevoProducto extends JFrame {
             message.setText("Ningún campo puede quedar en blanco.");
         }
         
+        
+        
 //            factura.addRow(new Object[]{inventario.getValueAt(TablaInventario.getSelectedRow(), 0),
 //                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 1),
 //                                        inventario.getValueAt(TablaInventario.getSelectedRow(), 2)});
         
     }  
+    
+    private void initComponentsPersonalizated(){
+        txtProve.setDocument(new JTextFieldLimit(25));
+        txtNom.setDocument(new JTextFieldLimit(30));
+        txtCant.setDocument(new JTextFieldLimit(3));
+        txtPrec.setDocument(new JTextFieldLimit(3));
+        txtFechaIng.setDocument(new JTextFieldLimit(10));
+        txtDescrip.setDocument(new JTextFieldLimit(500));
+    }
+    
     class Panel extends javax.swing.JPanel {
         public Panel(){
             this.setSize(420,420);
