@@ -10,6 +10,7 @@ package proyectobases;
  * @author secarden
  */
 import java.awt.*;
+import java.sql.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.*;
@@ -34,21 +35,25 @@ public class ListaProductos extends JFrame {
     DefaultTableModel modelo = new DefaultTableModel();
     JTable tabListProducts = new JTable();
     JScrollPane sp1 = new JScrollPane(tabListProducts);
+    static final String DATABASE_URL = "jdbc:mysql://localhost/proyecto";
            
     public ListaProductos(){
         setVisible(true);
         setSize(430,380);
         setTitle("Añadir producto existente");
         setResizable(false);
+        setLocation(900, 200);      
+        
         setLocation(900, 200);
                 
         message.setBounds(15,270,300,15);
         message.setForeground(Color.ORANGE);
+
         lblListProducts.setBounds(15,30,250,15);
         lblListProducts.setForeground(Color.white);
         
         modelo.addColumn("Nombre");
-        modelo.addColumn("Disponibilidad");
+        modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
         tabListProducts.setModel(modelo);
         
@@ -93,6 +98,34 @@ public class ListaProductos extends JFrame {
         p.setLayout(new BorderLayout(0, 0));
         setContentPane(p);
         
+        Connection con = null;
+        Statement st = null;
+        ResultSet re = null;
+        
+        try{
+            con = DriverManager.getConnection(DATABASE_URL, "root", "admin1234");
+            st = con.createStatement();
+            re = st.executeQuery("SELECT nombre, cantidad, precio FROM Material");
+            ResultSetMetaData m = re.getMetaData();
+            int num = m.getColumnCount();
+            while(re.next()){
+                for(int i = 1; i <= num; i++){
+                   modelo.addRow(new Object[]{"" + re.getObject(i), "" + re.getObject(i+1), "" + re.getObject(i+2)});
+                   break;
+                }
+            }
+        }catch(Exception e){
+            System.out.println(e);
+        }finally{
+            try{
+                re.close();
+                st.close();
+                con.close();
+            }catch(Exception e){
+                System.out.println(e);
+            }
+        }
+          
     }
     
     private void btnRegresarMouseClicked(java.awt.event.MouseEvent evt) {                                        
